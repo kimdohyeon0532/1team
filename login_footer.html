@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CHAGAN 차간</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Gowun Batang', sans-serif;
+            background: #f5f5f3;
+            color: #1a1a1a;
+
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============ NAVIGATION ============ */
+        header.nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: #fff;
+            border-bottom: 1px solid #e9e7e2;
+        }
+
+        .nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        .menu {
+            display: flex;
+            gap: 26px;
+            align-items: center;
+        }
+
+        .menu a {
+            font-size: 20px;
+        }
+
+        .menu a:hover {
+            color: #666;
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background-color: #000;
+            color: white;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+        }
+
+        .footer-top,
+        .footer-bottom {
+            padding: 50px 0;
+            border-bottom: solid 1px #adadad;
+        }
+
+        .footer-top .container,
+        .footer-bottom .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-left {
+            display: flex;
+            flex: 1.5;
+            min-width: 500px;
+            gap: 30px;
+        }
+
+        .footer-left img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .footer-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .footer-title {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border-top: 1px #6e6d6d;
+        }
+
+        .footer-desc {
+            font-size: 16px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .footer-section {
+            flex: 0.7;
+            min-width: 140px;
+        }
+
+        .footer-section h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            font-size: 15px;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .footer-bottom-left {
+            font-size: 13px;
+            color: #ccc;
+            flex: 1;
+        }
+
+        .footer-bottom-left span {
+            margin-right: 15px;
+
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-social i {
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .footer-social i:hover {
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+
+            .nav .container,
+            .footer-top .container,
+            .footer-bottom .container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .footer-left {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-left img {
+                width: 240px;
+                height: 240px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--  HEADER -->
+    <header class="nav">
+        <div class="container">
+            <div class="brand">
+                <img src="./img/CHAGANlogoText.png" alt="차간 로고">
+            </div>
+            <nav aria-label="주요 메뉴">
+                <div class="menu">
+                    <a href="#">Brand</a>
+                    <a href="#">Journal</a>
+                    <a href="#">Collection</a>
+                    <a href="#">Login</a>
+                    <a href="#">Sign up</a>
+                    <span style="font-size:25px"><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+    <!--  FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-left">
+                    <img src="./img/simbol2.png" alt="로고">
+                    <div class="footer-text">
+                        <div class="footer-title">ONLINE SHOP</div>
+                        <div class="footer-desc">
+                            온라인 숍 상담: 11AM - 4PM<br>
+                            (점심시간 1PM-2PM / 토, 일, 공휴일 휴무)<br><br>
+                            오프라인 숍 영업 화-일 / 12PM-7PM (월요일 휴무)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>HELP</h4>
+                    <ul>
+                        <li>고객센터</li>
+                        <li>주문/배송 조회</li>
+                        <li>공지사항</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>CONTACT</h4>
+                    <ul>
+                        <li>B2B 문의</li>
+                        <li>입점 문의</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li>BRAND STORY</li>
+                        <li>JOURNEL</li>
+                        <li>회원가입</li>
+                        <li>매장안내</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-left">
+                    <span>회사소개</span>
+                    <span>회원약관</span>
+                    <span>인재채용</span>
+                    <span>사이트맵</span>
+                    <span>이용약관</span>
+                    <span>개인정보처리방침</span>
+                    <span>개인정보관리자 박지영</span>
+                    <span>@CHAGAN All Rights Reserved.</span>
+                </div>
+                <div class="footer-social">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
