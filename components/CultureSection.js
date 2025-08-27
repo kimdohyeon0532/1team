@@ -46,13 +46,11 @@ export default function CultureSection() {
     const titleRef = useRef(null);
     const sceneRef = useRef(null);
 
-    // 배경색을 CSS 변수에서 읽어 적용
     const background = useMemo(() => {
         const css = getComputedStyle(document.documentElement);
         return css.getPropertyValue(PAGES[page].colorVar).trim() || "#000";
     }, [page]);
 
-    // 탭 바꾸면 카드/타이틀 살짝 페이드 인
     useEffect(() => {
         const t = titleRef.current;
         const s = sceneRef.current;
@@ -66,10 +64,9 @@ export default function CultureSection() {
         return () => clearTimeout(id);
     }, [page]);
 
-    // 섹션 내부 휠/터치 → 패럴랙스
     useEffect(() => {
-        const el = wrapRef.current;
-        if (!el) return;
+        const scene = sceneRef.current;
+        if (!scene) return;
 
         const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
         const applyDelta = (delta) => {
@@ -80,9 +77,10 @@ export default function CultureSection() {
             });
         };
 
+        const isInsideScene = (target) => scene.contains(target);
+
         const onWheel = (e) => {
-            // 섹션 안에서만 살짝 움직이게
-            if (!el.contains(e.target)) return;
+            if (!isInsideScene(e.target)) return;
             e.preventDefault();
             const d = clamp(e.deltaY, -80, 80);
             applyDelta(d);
@@ -91,21 +89,21 @@ export default function CultureSection() {
         let tsY = 0;
         const onTouchStart = (e) => (tsY = e.touches?.[0]?.clientY || 0);
         const onTouchMove = (e) => {
-            if (!el.contains(e.target)) return;
+            if (!isInsideScene(e.target)) return;
             e.preventDefault();
             const y = e.touches?.[0]?.clientY || 0;
             const d = clamp(tsY - y, -80, 80);
             applyDelta(d);
         };
 
-        el.addEventListener("wheel", onWheel, { passive: false });
-        el.addEventListener("touchstart", onTouchStart, { passive: true });
-        el.addEventListener("touchmove", onTouchMove, { passive: false });
+        document.addEventListener("wheel", onWheel, { passive: false });
+        document.addEventListener("touchstart", onTouchStart, { passive: true });
+        document.addEventListener("touchmove", onTouchMove, { passive: false });
 
         return () => {
-            el.removeEventListener("wheel", onWheel);
-            el.removeEventListener("touchstart", onTouchStart);
-            el.removeEventListener("touchmove", onTouchMove);
+            document.removeEventListener("wheel", onWheel);
+            document.removeEventListener("touchstart", onTouchStart);
+            document.removeEventListener("touchmove", onTouchMove);
         };
     }, []);
 
@@ -129,7 +127,11 @@ export default function CultureSection() {
                     </nav>
                 </header>
 
-                <h1 className="main-title visible" ref={titleRef} dangerouslySetInnerHTML={{ __html: PAGES[page].titleHTML }} />
+                <h1
+                    className="main-title visible"
+                    ref={titleRef}
+                    dangerouslySetInnerHTML={{ __html: PAGES[page].titleHTML }}
+                />
 
                 <section className="scroll-scene visible" ref={sceneRef}>
                     <div className="columns">

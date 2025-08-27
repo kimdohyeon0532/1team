@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 const DATA = [
-    { img: "/img/main2-1.png", desc: "일상다감,<br>토림도예 개인전" },
-    { img: "/img/main2-2.png", desc: "일상다감,<br>토림도예 개인전" },
+    { img: "/img/main2-1.png", desc: "일상다감,<br>박지영 작가의 개인전" },
+    { img: "/img/main2-2.png", desc: "일상다감,<br>김도현 선수의 개인전 단체전 금메달" },
     { img: "/img/main2-3.png", desc: "일상다감,<br>토림도예 개인전" },
 ];
 
