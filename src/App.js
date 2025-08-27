@@ -14,6 +14,8 @@ import MyPage from "./pages/MyPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import CollectionTablePage from "./pages/CollectionTablePage";
 import CollectionTeaPage from "./pages/CollectionTeaPage";
+import CartPage from "./pages/Cart";
+
 
 
 export default function App() {
@@ -34,7 +36,9 @@ export default function App() {
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/signup" element={<SignupPage />} />
-      <Route path="/product/:id" element={<ProductDetailPage />} />
+      <Route path="/product/" element={<ProductDetailPage />} />
+      <Route path="/cart/" element={<CartPage />} />
+
     </Routes>
   );
 }

@@ -1,0 +1,172 @@
+/* === 기본 스타일 === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Gowun Batang', sans-serif;
+  background: #f5f5f3;
+  color: #1a1a1a;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* === MAIN CART 영역 === */
+main.cart {
+  margin: 60px auto;
+  text-align: center;
+}
+
+.cart h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.cart .step {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  justify-content: center;
+  margin-bottom: 40px;
+  color: #aaa;
+}
+
+.cart .step .active {
+  color: black;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* === 장바구니 테이블 === */
+.cart-table {
+  width: 100%;
+  border-top: 2px solid #333;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.cart-table thead {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.cart-table .item-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+}
+
+.cart-table .item-info img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+/* === 액션 버튼 === */
+.cart-actions {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.cart-actions .delete {
+  padding: 8px 16px;
+  background: none;
+  border: 1px solid #999;
+  color: #333;
+  cursor: pointer;
+}
+
+/* === 결제 요약 === */
+.summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.summary div {
+  border: 1px solid #ccc;
+  padding: 15px 20px;
+  min-width: 150px;
+}
+
+.summary .total {
+  font-weight: bold;
+  color: black;
+  font-size: 18px;
+}
+
+.summary i {
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === 주문 버튼 === */
+.order-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 60px;
+}
+
+.order-buttons button {
+  padding: 12px 24px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.order-buttons .gray {
+  background: #fff;
+  border: 1px solid #333;
+  color: #333;
+}
+
+.order-buttons .black {
+  background: #000;
+  color: white;
+}
+
+/* === 반응형 대응 === */
+@media (max-width: 768px) {
+  .cart-table .item-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .summary {
+    flex-direction: column;
+  }
+
+  .order-buttons {
+    flex-direction: column;
+  }
+}
