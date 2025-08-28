@@ -16,7 +16,7 @@
         
                 <section className="review container snap snap-center">
                     <h3 className="section-title">
-                        NEW IN <br /><small>이번주 신상품</small>
+                        Review <br /><small>CHAGAN 리뷰</small>
                     </h3>
         
                     <div className="review-grid">

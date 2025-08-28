@@ -1,0 +1,224 @@
+/* ─────────────────────────────────────────
+   카드/섹션 레이아웃 (스샷 무드 강화)
+──────────────────────────────────────────*/
+.checkout .section{
+  background:#fff;
+  border:1px solid #e6e6e6;
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:28px;
+  box-shadow:0 2px 12px rgba(0,0,0,.03);
+}
+.checkout .section-title{
+  font-size:18px; font-weight:700;
+  padding:16px 18px;
+  background:linear-gradient(#fbfbfb,#f6f6f6);
+  border-bottom:1px solid #ececec;
+  letter-spacing:.2px;
+}
+.checkout .section-body{ padding:18px; }
+
+/* ─────────────────────────────────────────
+   얇은 표 라인 + 라벨 칼럼 (장바구니 톤 통일)
+──────────────────────────────────────────*/
+.cart-table.slim{
+  width:100%;
+  border-top:2px solid #333;
+  border-collapse:collapse;
+  background:#fff;
+  margin-bottom:14px;
+  font-size:15px;
+  line-height:1.6;
+}
+.cart-table.slim th,
+.cart-table.slim td{
+  padding:14px 16px;
+  border-bottom:1px solid #eee;
+  vertical-align:middle;
+}
+.cart-table.slim.form th{
+  width:180px;
+  text-align:left;
+  color:#333;
+  background:#f7f7f7;
+  border-right:1px solid #ededed;
+}
+.cart-table.slim.leftlabel th{
+  width:180px;
+  text-align:left;
+  color:#333;
+  background:#f4f4f4;
+  border-right:1px solid #ededed;
+}
+
+/* 표 안 작은 보조 텍스트 */
+.hint{ font-size:12px; color:#8a8a8a; margin-left:10px; }
+.hint.center{ display:block; text-align:center; margin-top:8px; }
+
+/* ─────────────────────────────────────────
+   입력 컨트롤 (시각적 일관 + 포커스 링)
+──────────────────────────────────────────*/
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+select,
+textarea{
+  width:100%;
+  padding:11px 12px;
+  border:1.3px solid #cfcfcf;
+  background:#fff;
+  border-radius:6px;
+  font:inherit;
+  transition:border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+textarea{ min-height:80px; resize:vertical; }
+
+input:focus, select:focus, textarea:focus{
+  outline:none;
+  border-color:#111;
+  box-shadow:0 0 0 3px rgba(0,0,0,.08);
+}
+
+/* 숫자/전화 등 입력 자리표시 개선 */
+input::placeholder, textarea::placeholder{ color:#bcbcbc; }
+
+/* ─────────────────────────────────────────
+   표 내부 그리드 유틸 (정갈한 줄맞춤)
+──────────────────────────────────────────*/
+.row-addr{ display:grid; grid-template-columns:1fr 110px; gap:10px; }
+.row-inline{ display:grid; grid-template-columns:1fr 160px; gap:10px; }
+.row-2{ display:grid; grid-template-columns:1fr 160px; gap:10px; align-items:center; }
+.row-3{ display:grid; grid-template-columns:1fr 210px 160px; gap:10px; }
+.row-4{ display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1.2fr; gap:10px; }
+.row-4 .span-2{ grid-column:span 2; }
+.mt8{ margin-top:8px; }
+.mb10{ margin-bottom:10px; }
+
+/* ─────────────────────────────────────────
+   칩/라디오 (선택 상태가 확실히 보이도록)
+──────────────────────────────────────────*/
+.radio-line{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+label.chip{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:9px 14px;
+  border:1.5px solid #c8c8c8;
+  border-radius:999px;
+  background:#fff;
+  cursor:pointer;
+  transition:border-color .15s ease, background-color .15s ease, box-shadow .15s ease;
+}
+label.chip:hover{ border-color:#999; }
+label.chip input{ accent-color:#111; }
+
+/* 최신 브라우저에서 선택상태 스타일 (크롬/사파리 지원) */
+label.chip:has(input:checked){
+  border-color:#111;
+  background:#f3f3f3;
+  box-shadow:0 1px 0 rgba(0,0,0,.05) inset;
+}
+
+/* ─────────────────────────────────────────
+   결제 요약 바 (장바구니와 톤 통일 + 더 또렷하게)
+──────────────────────────────────────────*/
+.summary{ display:flex; justify-content:flex-end; align-items:center; gap:22px; }
+.summary > div{
+  border:1px solid #e6e6e6;
+  background:#fff;
+  border-radius:10px;
+  padding:14px 18px;
+  min-width:160px;
+  text-align:center;
+  box-shadow:0 1px 6px rgba(0,0,0,.03);
+}
+.summary .total{ font-weight:800; font-size:18px; color:#111; }
+
+.summary i{
+  width:28px; height:28px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; box-shadow:0 1px 4px rgba(0,0,0,.08);
+}
+.summary .fa-plus{ background:#64886d; }
+.summary .fa-minus{ background:#9c5a5a; }
+.summary .fa-equals{ background:#c89b63; }
+
+/* 가격 정렬 */
+.price{ text-align:right; font-weight:700; }
+.price strong{ font-size:18px; }
+.price.discount, .summary .discount{ color:#64886d; }
+
+/* ─────────────────────────────────────────
+   버튼 (고스트/결제)
+──────────────────────────────────────────*/
+.btn-ghost{
+  font-family:'Gowun Batang', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  padding:10px 14px;
+  background:#fff;
+  border:1.5px solid #787878;
+  border-radius:8px;
+  cursor:pointer;
+  transition:background .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.btn-ghost:hover{
+  background:#f8f8f8;
+  border-color:#555;
+  box-shadow:0 1px 6px rgba(0,0,0,.06);
+}
+
+.pay-action{ display:flex; justify-content:center; margin-top:22px; }
+.btn-pay{
+  width:230px; height:50px;
+  background:#282727;
+  color:#fff;
+  font-weight:800; font-size:18px;
+  border:none; border-radius:10px;
+  cursor:pointer;
+  letter-spacing:.2px;
+  box-shadow:0 6px 16px rgba(0,0,0,.08);
+  transition:transform .05s ease, filter .15s ease, box-shadow .15s ease;
+}
+.btn-pay:hover{ filter:brightness(1.08); box-shadow:0 8px 20px rgba(0,0,0,.12); }
+.btn-pay:active{ transform:translateY(1px); }
+
+/* ─────────────────────────────────────────
+   장바구니 테이블(상단 영역) 디테일 업
+──────────────────────────────────────────*/
+.cart-table .item-info img{
+  border:1px solid #e6e6e6;
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 1px 6px rgba(0,0,0,.03);
+}
+
+.order-buttons{ gap:16px; }
+.order-buttons .gray,
+.order-buttons .black{
+  border-radius:10px;
+  padding:14px 24px;
+  font-weight:800;
+  letter-spacing:.1px;
+}
+.order-buttons .gray{
+  background:#fff; color:#111; border:1.5px solid #222;
+  transition:background .15s ease, box-shadow .15s ease;
+}
+.order-buttons .gray:hover{ background:#f8f8f8; box-shadow:0 1px 8px rgba(0,0,0,.06); }
+.order-buttons .black{
+  background:#111; color:#fff; border:1.5px solid #111;
+  transition:filter .15s ease, box-shadow .15s ease;
+}
+.order-buttons .black:hover{ filter:brightness(1.08); box-shadow:0 1px 10px rgba(0,0,0,.1); }
+
+/* ─────────────────────────────────────────
+   반응형
+──────────────────────────────────────────*/
+@media (max-width:1024px){
+  .row-3{ grid-template-columns:1fr 1fr 1fr; }
+  .row-2{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:768px){
+  .row-addr, .row-inline, .row-2, .row-3, .row-4{ grid-template-columns:1fr; }
+  .cart-table.slim.form th, .cart-table.slim.leftlabel th{ width:auto; }
+  .summary{ flex-direction:column; align-items:flex-end; }
+  .summary > div{ width:100%; }
+}

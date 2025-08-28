@@ -1,0 +1,85 @@
+/* 폰트 (원한다면 삭제 가능) */
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap");
+
+* { box-sizing: border-box; }
+body { font-family: 'Gowun Batang', sans-serif; color: #1a1a1a; background:#fff; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+/* ============ NAVIGATION ============ */
+header.nav { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid #e9e7e2; }
+.nav .container { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand img { width: 150px; height: 150px; object-fit: contain; }
+.menu { display: flex; gap: 26px; align-items: center; }
+.menu a { font-size: 20px; }
+.menu a:hover { color: #666; }
+
+/* ============ ORDER COMPLETE ============ */
+#Topmenu {
+  padding: 18px 20px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+#Topmenu h1 { margin: 0; font-size: 35px; padding: 15px; }
+#Topmenu ul { list-style: none; display: flex; gap: 20px; font-size: 20px; }
+#Topmenu ul li { color: #999; }
+#Topmenu ul li.active { color: #000; font-weight: bold; }
+
+.order-complete { text-align: center; padding: 20px 20px; }
+.success-message { font-size: 45px; font-weight: 700; color: #006400; margin: 131px 0 5px; }
+.thank-message { font-size: 25px; margin-bottom: 30px; }
+
+.order-info {
+  border: 1px solid #ccc;
+  display: inline-block;
+  text-align: left;
+  padding: 20px 40px;
+  margin-bottom: 30px;
+  line-height: 1.8;
+  width: 524px;
+  height: 181px;
+}
+.order-info p { text-align: center; margin-bottom: 30px; }
+
+#menus { display: flex; justify-content: center; gap: 10px; margin-bottom: 208px; }
+#menus button {
+  background: #000; color: #fff; border: none;
+  padding: 12px 24px; cursor: pointer; font-size: 14px;
+}
+#menus button:hover { background: #444; }
+
+/* ============ FOOTER ============ */
+footer { background-color: #000; color: white; border-top: 1px solid #fff; border-bottom: 1px solid #fff; }
+.footer-top, .footer-bottom { padding: 50px 0; border-bottom: solid 1px #adadad; }
+.footer-top .container, .footer-bottom .container {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;
+}
+.footer-left { display: flex; flex: 1.5; min-width: 500px; gap: 30px; }
+.footer-left img { width: 150px; height: 150px; object-fit: cover; }
+.footer-text { display: flex; flex-direction: column; justify-content: flex-start; }
+.footer-title { font-size: 36px; font-weight: 600; margin-bottom: 20px; border-top: 1px #6e6d6d; }
+.footer-desc { font-size: 16px; color: #ccc; line-height: 1.8; }
+.footer-section { flex: 0.7; min-width: 140px; }
+.footer-section h4 { font-size: 20px; margin-bottom: 15px; }
+.footer-section ul { list-style: none; font-size: 15px; padding: 0; }
+.footer-section ul li { margin-bottom: 10px; color: #ccc; }
+.footer-bottom-left { font-size: 13px; color: #ccc; flex: 1; }
+.footer-bottom-left span { margin-right: 15px; }
+.footer-social { display: flex; gap: 20px; }
+.footer-social i { color: white; font-size: 20px; cursor: pointer; }
+.footer-social i:hover { color: #aaa; }
+
+@media (max-width: 768px) {
+  .nav .container,
+  .footer-top .container,
+  .footer-bottom .container {
+    flex-direction: column; align-items: flex-start; gap: 20px;
+  }
+  .footer-left { flex-direction: column; align-items: center; text-align: center; }
+  .footer-left img { width: 240px; height: 240px; }
+}

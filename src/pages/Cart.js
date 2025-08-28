@@ -1,14 +1,16 @@
-// src/pages/CartPage.js
 import React from "react";
-import "./Cart.css"; 
+import "./Cart.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 export default function CartPage() {
-  return (  
-  <>
+  const navigate = useNavigate();
+
+  return (
+    <>
       <Header />
-  
+
       <main className="cart container">
         <h2>장바구니</h2>
         <div className="step">
@@ -16,7 +18,7 @@ export default function CartPage() {
           <span>02 주문서 작성/결제</span>
           <span>03 주문완료</span>
         </div>
-  
+
         <table className="cart-table">
           <thead>
             <tr>
@@ -59,11 +61,11 @@ export default function CartPage() {
             </tr>
           </tbody>
         </table>
-  
+
         <div className="cart-actions">
           <button className="delete">선택상품 삭제</button>
         </div>
-  
+
         <div className="summary">
           <div>
             <strong>총 2개의 상품금액</strong><br />
@@ -80,14 +82,14 @@ export default function CartPage() {
             <span className="total">138,500원</span>
           </div>
         </div>
-  
+
         <div className="order-buttons">
-          <button className="gray">선택상품 주문</button>
-          <button className="black">전체상품 주문</button>
+          <button className="gray" onClick={() => navigate("/order")}>선택상품 주문</button>
+          <button className="black" onClick={() => navigate("/order")}>전체상품 주문</button>
         </div>
       </main>
-  
-    <Footer />
-  </>
+
+      <Footer />
+    </>
   );
 }

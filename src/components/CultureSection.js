@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PAGES = {
   TEA_WARE: {
@@ -39,6 +40,13 @@ const PAGES = {
   },
 };
 
+// 컬렉션 라우트 매핑
+const PAGE_TO_PATH = {
+  TEA_WARE: "/collection/teaware",
+  ART_CRAFT: "/collection",
+  TABLE_WARE: "/collection/tableware",
+};
+
 export default function CultureSection() {
   const [page, setPage] = useState("TEA_WARE");
   const [offsets, setOffsets] = useState({ left: [-60, 10, 80], right: [40, 110, 180] });
@@ -46,6 +54,7 @@ export default function CultureSection() {
   const wrapRef = useRef(null);
   const titleRef = useRef(null);
   const sceneRef = useRef(null);
+  const navigate = useNavigate();
 
   const pageOrder = ["TEA_WARE", "ART_CRAFT", "TABLE_WARE"];
   const THRESHOLD = 150;
@@ -55,7 +64,7 @@ export default function CultureSection() {
     return css.getPropertyValue(PAGES[page].colorVar).trim() || "#000";
   }, [page]);
 
-  // 페이지 타이틀/씬 애니메이션
+  // 타이틀/씬 페이드 인
   useEffect(() => {
     const t = titleRef.current;
     const s = sceneRef.current;
@@ -69,7 +78,7 @@ export default function CultureSection() {
     return () => clearTimeout(id);
   }, [page]);
 
-  // 페이지 전환 체크 함수
+  // 페이지 전환 체크
   const checkForPageChange = (nextOffsets) => {
     const allUp =
       nextOffsets.left.every((v) => v <= -THRESHOLD) &&
@@ -79,34 +88,30 @@ export default function CultureSection() {
       nextOffsets.right.every((v) => v >= THRESHOLD);
 
     const currentIndex = pageOrder.indexOf(page);
-    if (allDown && currentIndex < pageOrder.length - 1) {
-      setPage(pageOrder[currentIndex + 1]);
-    } else if (allUp && currentIndex > 0) {
-      setPage(pageOrder[currentIndex - 1]);
-    }
+    if (allDown && currentIndex < pageOrder.length - 1) setPage(pageOrder[currentIndex + 1]);
+    else if (allUp && currentIndex > 0) setPage(pageOrder[currentIndex - 1]);
   };
 
-  // 스크롤/터치 이동 처리
+  // 스크롤/터치 처리
   useEffect(() => {
     const scene = sceneRef.current;
     if (!scene) return;
 
     const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
-
     const applyDelta = (delta) => {
       setOffsets((prev) => {
         const newLeft = prev.left.map((y) => y - delta * 0.5);
         const newRight = prev.right.map((y) => y + delta * 0.5);
         const nextOffsets = { left: newLeft, right: newRight };
-        checkForPageChange(nextOffsets); // 💡 여기서 전환 체크
+        checkForPageChange(nextOffsets);
         return nextOffsets;
       });
     };
 
-    const isInsideScene = (target) => scene.contains(target);
+    const isInside = (target) => scene.contains(target);
 
     const onWheel = (e) => {
-      if (!isInsideScene(e.target)) return;
+      if (!isInside(e.target)) return;
       e.preventDefault();
       const d = clamp(e.deltaY, -80, 80);
       applyDelta(d);
@@ -115,7 +120,7 @@ export default function CultureSection() {
     let tsY = 0;
     const onTouchStart = (e) => (tsY = e.touches?.[0]?.clientY || 0);
     const onTouchMove = (e) => {
-      if (!isInsideScene(e.target)) return;
+      if (!isInside(e.target)) return;
       e.preventDefault();
       const y = e.touches?.[0]?.clientY || 0;
       const d = clamp(tsY - y, -80, 80);
@@ -133,6 +138,20 @@ export default function CultureSection() {
     };
   }, [page]);
 
+  // 현재 페이지의 컬렉션으로 이동
+  const goCollection = () => {
+    const path = PAGE_TO_PATH[page];
+    if (path) navigate(path);
+  };
+
+  // 키보드 접근성(Enter/Space)
+  const onCardKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      goCollection();
+    }
+  };
+
   const imgs = PAGES[page].images;
 
   return (
@@ -145,6 +164,7 @@ export default function CultureSection() {
                 key={k}
                 className={k === page ? "active" : ""}
                 onClick={() => setPage(k)}
+                aria-current={k === page ? "page" : undefined}
               >
                 {k.replace("_", "&")}
               </button>
@@ -162,14 +182,33 @@ export default function CultureSection() {
           <div className="columns">
             <div className="column left-column">
               {[0, 1, 2].map((i) => (
-                <article key={`l${i}`} className="card" style={{ transform: `translateY(${offsets.left[i]}px)` }}>
+                <article
+                  key={`l${i}`}
+                  className="card"
+                  style={{ transform: `translateY(${offsets.left[i]}px)`, cursor: "pointer" }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="해당 컬렉션으로 이동"
+                  onClick={goCollection}
+                  onKeyDown={onCardKeyDown}
+                >
                   <img src={imgs[i]} alt={`left-${i}`} />
                 </article>
               ))}
             </div>
+
             <div className="column right-column">
               {[3, 4, 5].map((i, j) => (
-                <article key={`r${i}`} className="card" style={{ transform: `translateY(${offsets.right[j]}px)` }}>
+                <article
+                  key={`r${i}`}
+                  className="card"
+                  style={{ transform: `translateY(${offsets.right[j]}px)`, cursor: "pointer" }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="해당 컬렉션으로 이동"
+                  onClick={goCollection}
+                  onKeyDown={onCardKeyDown}
+                >
                   <img src={imgs[i]} alt={`right-${j}`} />
                 </article>
               ))}

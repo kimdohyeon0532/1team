@@ -1,3 +1,5 @@
+// src/pages/ProductDetailPage.js
+
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -6,11 +8,9 @@ import "../pages/ProductDetailPage.css";
 // Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
 
-export default function ProductDetailPage() {
+export default function ProductDetailPage4() {
   const [quantity, setQuantity] = useState(1);
-  const navigate = useNavigate();
 
   // --- 리뷰 상태 ---
   const [rating, setRating] = useState(0);
@@ -20,16 +20,32 @@ export default function ProductDetailPage() {
 
   const [reviews, setReviews] = useState(
     [
-      { id: 2, name: "김**", date: "2025-07-10", rating: 4, content: "섬세하고 매트한 질감이 좋았습니다.", photos: [] },
-      { id: 1, name: "박**", date: "2025-08-13", rating: 5, content: "너무 예뻐요! 따뜻한 느낌을 줘요 ☺️", photos: ["/img/p_detail1-4.png"] },
+      {
+        id: 2,
+        name: "김**",
+        date: "2025-07-10",
+        rating: 4,
+        content: "섬세하고 매트한 질감이 좋았습니다.",
+        photos: ["/img/p_detail4-2.png"]
+      },
+      {
+        id: 1,
+        name: "박**",
+        date: "2025-08-13",
+        rating: 5,
+        content: "너무 예뻐요! 따뜻한 느낌을 줘요 ☺️",
+        photos: ["/img/p_detail4-4.png"]
+      },
     ].sort((a, b) => (a.date < b.date ? 1 : -1))
   ); // 최신순
 
   const handleImageChange = async (e) => {
     const files = Array.from(e.target.files || []);
     if (!files.length) return;
+
     const remain = Math.max(0, 3 - photos.length);
     const pick = files.slice(0, remain);
+
     const readers = await Promise.all(
       pick.map(
         (f) =>
@@ -51,8 +67,14 @@ export default function ProductDetailPage() {
 
   const submitReview = (e) => {
     e.preventDefault();
-    if (rating === 0) return alert("별점을 선택해주세요.");
-    if (reviewText.trim().length < 15) return alert("리뷰는 최소 15자 이상 작성해주세요.");
+    if (rating === 0) {
+      alert("별점을 선택해주세요.");
+      return;
+    }
+    if (reviewText.trim().length < 15) {
+      alert("리뷰는 최소 15자 이상 작성해주세요.");
+      return;
+    }
     const newReview = {
       id: Date.now(),
       name: "익명",
@@ -77,7 +99,7 @@ export default function ProductDetailPage() {
           <h2 className="product-brand">베르비에</h2>
 
           <div className="main-image">
-            <img src="/img/p_detail1-1.png" alt="대표 이미지" />
+            <img src="/img/p_detail4-1.png" alt="대표 이미지" />
           </div>
 
           <p className="description">
@@ -87,7 +109,7 @@ export default function ProductDetailPage() {
           </p>
 
           <div className="main-image">
-            <img src="/img/p_detail1-2.png" alt="서브1" />
+            <img src="/img/p_detail4-2.png" alt="서브1" />
           </div>
 
           <p className="description">
@@ -97,7 +119,7 @@ export default function ProductDetailPage() {
           </p>
 
           <div className="main-image">
-            <img src="/img/p_detail1-5.png" alt="세트 이미지" />
+            <img src="/img/p_detail4-3.png" alt="세트 이미지" />
           </div>
 
           <p className="description">
@@ -106,7 +128,7 @@ export default function ProductDetailPage() {
           </p>
 
           <div className="main-image">
-            <img src="/img/p_detail1-6.png" alt="디테일1" />
+            <img src="/img/p_detail4-4.png" alt="디테일1" />
           </div>
 
           <ul className="detail-notes">
@@ -127,6 +149,7 @@ export default function ProductDetailPage() {
                 한 잔 용량 약 95ml
               </div>
             </div>
+
             <div className="spec-row">
               <div className="spec-label">관리방법</div>
               <div className="spec-value">세제없이 물로만 세척</div>
@@ -139,7 +162,7 @@ export default function ProductDetailPage() {
           <section className="buy-row">
             {/* 좌측 이미지 */}
             <figure className="buy-photo">
-              <img src="/img/p_detail1-7.png" alt="눈결 개완" />
+              <img src="/img/p_detail4-5.png" alt="눈결 개완" />
             </figure>
 
             {/* 가운데 정보 블록 */}
@@ -175,8 +198,8 @@ export default function ProductDetailPage() {
 
             {/* 우측 세로 버튼 */}
             <aside className="buy-actions">
-              <button className="btn-ghost" onClick={() => navigate("/cart")}>장바구니</button>
-              <button className="btn-solid" onClick={() => navigate("/checkout")}>바로구매</button>
+              <button className="btn-ghost">장바구니</button>
+              <button className="btn-solid">바로구매</button>
             </aside>
           </section>
 
@@ -259,7 +282,11 @@ export default function ProductDetailPage() {
                   <div className="review-head">
                     <div className="stars-static" aria-label={`별점 ${r.rating}점`}>
                       {[1, 2, 3, 4, 5].map((s) => (
-                        <FontAwesomeIcon key={s} icon={faStar} className={s <= r.rating ? "star filled" : "star"} />
+                        <FontAwesomeIcon
+                          key={s}
+                          icon={faStar}
+                          className={s <= r.rating ? "star filled" : "star"}
+                        />
                       ))}
                     </div>
                     <small className="review-date">{r.date}</small>

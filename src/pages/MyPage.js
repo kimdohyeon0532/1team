@@ -2,8 +2,11 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "./MyPage.css";
+import { useNavigate } from "react-router-dom";
 
 export default function MyPage() {
+
+    const navigate = useNavigate();
     // 추후 실제 데이터 연동 자리 (예: API, Context)
     const user = {
         name: "김도현",
@@ -87,7 +90,7 @@ export default function MyPage() {
                         <div className="avatar" aria-hidden="true" />
                         <div className="name">
                             <span>{user.name} 님</span>
-                            <button type="button">회원정보 변경</button>
+                            <button type="button" onClick={() => navigate("/mypageEdit")}> 회원정보 변경 </button>
                         </div>
                     </div>
 
