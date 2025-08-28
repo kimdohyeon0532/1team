@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import BrandPage from "./pages/BrandPage";
+import CartPage from "./pages/Cart";
 import JournalPage from "./pages/JournalPage";
 import ExhibitionDetailPage1 from "./pages/ExhibitionDetailPage1";
 import ExhibitionDetailPage2 from "./pages/ExhibitionDetailPage2";
@@ -14,8 +15,6 @@ import MyPage from "./pages/MyPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import CollectionTablePage from "./pages/CollectionTablePage";
 import CollectionTeaPage from "./pages/CollectionTeaPage";
-import CartPage from "./pages/Cart";
-
 
 
 export default function App() {
@@ -23,6 +22,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/brand" element={<BrandPage />} />
+      <Route path="/cart" element={<CartPage />} />
       <Route path="/journal" element={<JournalPage />} />
       <Route path="/exhibition1" element={<ExhibitionDetailPage1 />} />
       <Route path="/exhibition2" element={<ExhibitionDetailPage2 />} />
@@ -30,15 +30,14 @@ export default function App() {
       <Route path="/collection" element={<CollectionPage />} />
       <Route path="/collection/tableware" element={<CollectionTablePage />} />
       <Route path="/collection/teaware" element={<CollectionTeaPage />} />
+      <Route path="/productdetailpage" element={<ProductDetailPage />} />
 
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/signup" element={<SignupPage />} />
-      <Route path="/product/" element={<ProductDetailPage />} />
-      <Route path="/cart/" element={<CartPage />} />
-
+      <Route path="/product/:id" element={<ProductDetailPage />} />
     </Routes>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { teaproducts } from "../data/TeaProducts";
@@ -33,6 +34,7 @@ export default function CollectionPage() {
         }
         .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 70px 20px; }
         .product-card { display: flex; flex-direction: column; align-items: flex-start; }
+        .product-card a {display: block; width: 100%;}
         .product-card img { width: 100%; height: auto; object-fit: cover; margin-bottom: 10px; }
         .product-brand { font-size: 15px; color: #555; margin-bottom: 5px; }
         .product-name { font-size: 16px; font-weight: bold; margin-bottom: 5px; }
@@ -46,16 +48,23 @@ export default function CollectionPage() {
       <div className="collection-container">
         <h2 className="product-title">TEA WARE</h2>
         <div className="product-grid">
-          {currentProducts.map((item) => (
-            <div key={item.id} className="product-card">
-              <img src={item.img} alt={item.title} />
-              <div className="product-brand">{item.brand}</div>
-              <div className="product-brand">{item.name}</div>
-              <div className="product-name">{item.title}</div>
-              <div className="product-desc">{item.desc}</div>
-              <div className="product-price">{item.price}</div>
-            </div>
-          ))}
+        {currentProducts.map((item) => (
+  <div key={item.id} className="product-card">
+    {/* 상품 이미지와 제목을 클릭하면 상세페이지로 이동 */}
+    {item.Link ? (
+      <Link to={item.Link}>
+        <img src={item.img} alt={item.title} />
+      </Link>
+    ) : (
+      <img src={item.img} alt={item.title} />
+    )}
+
+    <div className="product-brand">{item.name}</div>
+    <div className="product-name">{item.title}</div>
+    <div className="product-desc">{item.desc}</div>
+    <div className="product-price">{item.price}</div>
+  </div>
+))}
         </div>
 
         {/* 페이지네이션 */}

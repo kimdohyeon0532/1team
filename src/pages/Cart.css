@@ -30,22 +30,22 @@ main.cart {
 
 .cart h2 {
   font-size: 28px;
-  margin-bottom: 30px;
+  /*   margin-bottom: 30px; */
+  text-align: left;
 }
 
 .cart .step {
-  display: flex;
-  gap: 20px;
-  font-size: 14px;
-  justify-content: center;
+  font-size: 16px;
   margin-bottom: 40px;
   color: #aaa;
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
 }
 
 .cart .step .active {
   color: black;
   font-weight: 600;
-  text-decoration: underline;
 }
 
 /* === 장바구니 테이블 === */
@@ -91,25 +91,26 @@ main.cart {
 }
 
 .cart-actions .delete {
-  padding: 8px 16px;
+  font-family: 'Gowun Batang';
+  font-size: 16px;
+  padding: 13px 20px;
   background: none;
-  border: 1px solid #999;
-  color: #333;
+  border: 1.5px solid #777;
+  color: #000;
   cursor: pointer;
 }
 
 /* === 결제 요약 === */
 .summary {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  gap: 40px;
+  gap: 25px;
   margin-bottom: 20px;
   font-size: 16px;
 }
 
 .summary div {
-  border: 1px solid #ccc;
   padding: 15px 20px;
   min-width: 150px;
 }
@@ -121,36 +122,55 @@ main.cart {
 }
 
 .summary i {
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: white;
+}
+
+.summary .fa-plus {
+  background-color: #64886d;
+  /* 초록색 */
+}
+
+.summary .fa-equals {
+  background-color: #c89b63;
+  /* 갈색 */
 }
 
 /* === 주문 버튼 === */
 .order-buttons {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 60px;
+  justify-content: flex-end;
+  gap: 30px;
+  margin-bottom: 80px;
 }
 
 .order-buttons button {
-  padding: 12px 24px;
+  padding: 15px 28px;
   font-size: 15px;
   border: none;
   cursor: pointer;
 }
 
 .order-buttons .gray {
+  font-family: 'Gowun Batang';
+  font-weight: 700;
   background: #fff;
-  border: 1px solid #333;
-  color: #333;
+  border: 1px solid #282727;
+  color: #000;
 }
 
 .order-buttons .black {
-  background: #000;
+  font-family: 'Gowun Batang';
+  font-weight: 700;
+  background: #282727;
   color: white;
 }
 
