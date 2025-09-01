@@ -2,18 +2,18 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ITEMS = [
-  { img: "/img/newIn1-1.png", name: ["Kimura Glass", "BATHTUB 5oz Cocktail"], desc: "섬세한 두께감과 감각적인 실루엣의 핸드메이드 칵테일 잔", price: "112,000원" },
-  { img: "/img/newIn1-2.png", name: ["Kimura Glass", "BATHTUB 7oz Conte"], desc: "섬세한 두께감과 감각적인 실루엣의 핸드메이드 칵테일 잔", price: "112,000원" },
-  { img: "/img/newIn1-3.png", name: ["Kimura Glass", "BATHTUB 5oz Campagne Cocktail"], desc: "섬세한 두께감과 감각적인 실루엣의 핸드메이드 칵테일 잔", price: "100,000원" },
-  { img: "/img/newIn1-4.png", name: ["Kimura Glass", "BATHTUB 10oz Highball"], desc: "섬세한 두께감과 감각적인 실루엣의 핸드메이드 칵테일 잔", price: "100,000원" },
+  { img: "/img/newIn3-1.png", name: ["베르비에", "눈결개완"], desc: "[Timeless Craft] 눈결의 섬세함을 닮은 수공예 유리 개완", price: "55,000원" },
+  { img: "/img/newIn3-2.png", name: ["베르비에", "눈결 좁은잔"], desc: "[Timeless Craft] 눈결의 섬세함을 닮은 수공예 유리 찻잔", price: "40,000원" },
+  { img: "/img/newIn3-3.png", name: ["FOH 포", "목련잎 찻잔 받침"], desc: "[Timeless Craft] 목련잎의 형태를 섬세하게 표현한 찻잔 받침", price: "35,000원" },
+  { img: "/img/newIn3-4.png", name: ["FOH 포", "국화문 찻잔 받침"], desc: "[Timeless Craft] 국화꽃의 형태를 섬세하게 표현한 찻잔 받침", price: "35,000원" },
   { img: "/img/newIn2-1.png", name: ["박소희", "청자 미니 호롱 오발"], desc: "[Timeless Craft] 전통 등잔을 현대적인 미감으로 표현한 미니 도자 호롱", price: "60,000원" },
   { img: "/img/newIn2-2.png", name: ["박소희", "청자 미니 호롱 - 조롱박"], desc: "[Timeless Craft] 전통 등잔을 현대적인 미감으로 표현한 미니 도자 호롱", price: "60,000원" },
   { img: "/img/newIn2-3.png", name: ["박소희", "청자 양이 호롱"], desc: "[Timeless Craft] 전통 등잔을 현대적인 미감으로 표현한 미니 도자 호롱", price: "140,000원" },
   { img: "/img/newIn2-4.png", name: ["박소희", "청자 사과 호롱"], desc: "[Timeless Craft] 전통 등잔을 현대적인 미감으로 표현한 미니 도자 호롱", price: "120,000원" },
-  { img: "/img/newIn3-1.png", name: ["베르비에", "눈결개완"], desc: "[Timeless Craft] 눈결의 섬세함을 닮은 수공예 유리 개완", price: "55,000원" },
-  { img: "/img/newIn3-2.png", name: ["베르비에", "눈결 좁은잔"], desc: "[Timeless Craft] 눈결의 섬세함을 닮은 수공예 유리 찻잔", price: "40,000원" },
-  { img: "/img/newIn3-3.png", name: ["FOH 포","목련잎 찻잔 받침"], desc: "[Timeless Craft] 목련잎의 형태를 섬세하게 표현한 찻잔 받침", price: "35,000원" },
-  { img: "/img/newIn3-4.png", name: ["FOH 포","국화문 찻잔 받침"], desc: "[Timeless Craft] 국화꽃의 형태를 섬세하게 표현한 찻잔 받침", price: "35,000원" },
+  { img: "/img/newIn1-1.png", name: ["Kimura Glass", "BATHTUB 5oz Cocktail"], desc: "섬세한 두께감과 감각적인 실루엣의 핸드메이드 칵테일 잔", price: "112,000원" },
+  { img: "/img/newIn1-2.png", name: ["Kimura Glass", "BATHTUB 7oz Conte"], desc: "섬세한 두께감과 감각적인 실루엣의 핸드메이드 칵테일 잔", price: "112,000원" },
+  { img: "/img/newIn1-3.png", name: ["Kimura Glass", "BATHTUB 5oz Campagne Cocktail"], desc: "섬세한 두께감과 감각적인 실루엣의 핸드메이드 칵테일 잔", price: "100,000원" },
+  { img: "/img/newIn1-4.png", name: ["Kimura Glass", "BATHTUB 10oz Highball"], desc: "섬세한 두께감과 감각적인 실루엣의 핸드메이드 칵테일 잔", price: "100,000원" },
 ];
 
 export default function NewInCarousel() {
@@ -63,7 +63,7 @@ export default function NewInCarousel() {
         .newin .card .info p { margin:0; font-size:0.8rem; font-weight:800; line-height:1.4; color:#333; }
       `}</style>
 
-      <section className="newin container">
+      <section id="newin" className="newin container">
         <h3 className="section-title">
           NEW IN <br /><small>이번주 신상품</small>
         </h3>

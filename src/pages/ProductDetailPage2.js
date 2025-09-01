@@ -24,15 +24,15 @@ export default function ProductDetailPage2() {
         name: "김**",
         date: "2025-07-10",
         rating: 4,
-        content: "섬세하고 매트한 질감이 좋았습니다.",
-        photos: ["/img/p_detail2-2.png"]
+        content: "차가 잘 우러나고 좋아요:)",
+        photos: ["/img/p_detail2-8.png"]
       },
       {
         id: 1,
         name: "박**",
         date: "2025-08-13",
         rating: 5,
-        content: "너무 예뻐요! 따뜻한 느낌을 줘요 ☺️",
+        content: "주전자를 구매하고 차를 자주 우려 마시게 되었습니다!",
         photos: ["/img/p_detail2-4.png"]
       },
     ].sort((a, b) => (a.date < b.date ? 1 : -1))
@@ -94,17 +94,16 @@ export default function ProductDetailPage2() {
       <Header />
       <main className="product-detail-page">
         <div className="container">
-          <h1 className="product-title">눈결 개완</h1>
-          <h2 className="product-brand">베르비에</h2>
+          <h1 className="product-title">Herb Pot 0.5L</h1>
+          <h2 className="product-brand">Craft U</h2>
 
           <div className="main-image">
             <img src="/img/p_detail2-1.png" alt="대표 이미지" />
           </div>
 
           <p className="description">
-            유리공예가 〈베르비에〉의 〈눈결 개완〉을 소개합니다. <br />
-            서늘하고 포근함이 공존하는 눈雪 의 속성처럼 맑으면서도 모호한 표면이 아름다운 유리 개완입니다.
-            약 95ml 용량으로 1-2인의 차를 우리기 알맞은 용량이에요.
+            니가타현의 유리 공방 〈Craft U〉의 〈Herb Pot 0.5L〉를 소개합니다. <br />
+            우아한 실루엣이 아름다운 내열 유리 찻주전자로, 분리 가능한 유리 여과기가 함께 구성되어 간편하게 차를 우릴 수 있는 제품입니다.
           </p>
 
           <div className="main-image">
@@ -112,18 +111,19 @@ export default function ProductDetailPage2() {
           </div>
 
           <p className="description">
-            눈결 시리즈는 “눈이 쌓여 이룬 상태나 무늬, 눈에 슬쩍 뜨이는 잠깐동안 마음이 눈에 드러난 상태” 라는 의미를 지닌 <br /> 우리말 “눈결”을 모티브로 한 유하나 작가의 유리 공예 기물입니다. <br />
+            잎차의 색과 형태, 천천히 우러나는 모습을 눈으로 감상하는 것은 유리 다기를 사용하는 즐거움. <br />
             <br />
-            모든 기물은 형태를 흙으로 빚고 내화물을 바르고 굳힌 뒤, 조형틀에 유리 파우더와 알갱이를 켜켜이 쌓고 가마에 굽는 유리캐스팅 기법으로 제작합니다.
+            깔끔한 출수가 가능한 물대의 구조와 세심한 디테일까지, 바라볼수록 세심한 만듦새에 감탄하게 됩니다.
           </p>
 
           <div className="main-image">
-            <img src="/img/p_detail2-3.png" alt="세트 이미지" />
+            <img src="/img/p_detail2-5.png" alt="세트 이미지" />
           </div>
 
           <p className="description">
-            차의 수색이 투명하게 비치는 것도 유리 다기를 사용하는 즐거움. <br />
-            다양한 차를 우리기 좋은 차도구이자 소장가치가 높은 공예품으로 권해드립니다.
+            차를 우릴 때에는 끓는 물을 숙우에 한김 식혀 잎차에 알맞은 온도로 맞춘 후, 다관에 천천히 부어주세요.  <br />
+            <br />
+            대류 공간을 극대화하는 둥근 형태의 바디는 뜨거운 물을 부을 때 찻잎이 위아래로 움직이게 하여 차의 향과 풍미를 더욱 높여줍니다.
           </p>
 
           <div className="main-image">
@@ -141,17 +141,17 @@ export default function ProductDetailPage2() {
           <section className="spec-grid">
             <div className="spec-row">
               <div className="spec-label">재료</div>
-              <div className="spec-value">백자토</div>
+              <div className="spec-value">내열유리</div>
               <div className="spec-label">크기&용량</div>
               <div className="spec-value">
-                (받침포함) 높이 70mm · 받침 Ø95 x H15mm<br />
-                한 잔 용량 약 95ml
+                W155 x D108 x H205mm<br />
+                적정용량 약 450ml
               </div>
             </div>
 
             <div className="spec-row">
               <div className="spec-label">관리방법</div>
-              <div className="spec-value">세제없이 물로만 세척</div>
+              <div className="spec-value">부드러운 스펀지 or 천</div>
               <div className="spec-label">주의사항</div>
               <div className="spec-value">상세페이지 하단 표기</div>
             </div>
@@ -161,21 +161,21 @@ export default function ProductDetailPage2() {
           <section className="buy-row">
             {/* 좌측 이미지 */}
             <figure className="buy-photo">
-              <img src="/img/p_detail1-7.png" alt="눈결 개완" />
+              <img src="/img/p_detail2-7.png" alt="티팟" />
             </figure>
 
             {/* 가운데 정보 블록 */}
             <div className="buy-info">
-              <div className="buy-brand">베르비에</div>
-              <h3 className="buy-title">눈결 개완</h3>
-              <p className="buy-desc">[Timeless Craft] 눈결의 섬세함을 닮은 수공예 유리 개완</p>
+              <div className="buy-brand">Craft U</div>
+              <h3 className="buy-title">Herb Pot 0.5L</h3>
+              <p className="buy-desc">[Timeless Craft] 분리가 가능한 찻잎 여과기가 함께 구성된 유리 찻주전자</p>
 
-              <div className="buy-price">55,000원</div>
+              <div className="buy-price">40,000원</div>
 
               {/* 총 상품금액 라인 + 수량 스피너 (인라인) */}
               <div className="buy-total">
                 <span className="total-label">총 상품금액</span>
-                <strong className="total-price">55,000원</strong>
+                <strong className="total-price">40,000원</strong>
 
                 <div className="buy-qty inline">
                   <div className="spinner">

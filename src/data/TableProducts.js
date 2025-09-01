@@ -94,6 +94,46 @@ export const tableproducts = [
         title: "BATHTUB 5oz Cocktail",
         desc: "섬세한 두께감과 감각적인 실루엣의 핸드메이드 칵테일 잔",
         price: "112,000원",
-      }
+      },
+      {
+        id: 13,
+        img: "/img/Tableware1.png",
+        name: "지승민의 공기",
+        title: "Rim Oval Plate M",
+        desc: "섬세하게 표현해 낸 표면의 텍스쳐가 아름다운 컬렉션",
+        price: "80,000원",
+      },
+      {
+        id: 14,
+        img: "/img/Tableware2.png",
+        name: "지승민의 공기",
+        title: "Rim Oval Plate S",
+        desc: "섬세하게 표현해 낸 표면의 텍스쳐가 아름다운 컬렉션",
+        price: "40,000원",
+      },
+      {
+          id: 15,
+          img: "/img/Tableware3.png",
+          name: "지승민의 공기",
+          title: "Rim Oval Plate L",
+          desc: "섬세하게 표현해 낸 표면의 텍스쳐가 아름다운 컬렉션",
+          price: "100,000원",
+        },
+        {
+          id: 16,
+          img: "/img/Tableware4.png",
+          name: "도윤공방",
+          title: "낮은 접시",
+          desc: "오묘하고 차분한 색감의 핸드메이드 도자기 그릇",
+          price: "50,000원",
+        },
+        {
+          id: 17,
+          img: "/img/Tableware5.png",
+          name: "도윤공방",
+          title: "타원형 그릇",
+          desc: "오묘하고 차분한 색감의 핸드메이드 타원형 도자기 그릇",
+          price: "80,000원",
+        },
   ];
   

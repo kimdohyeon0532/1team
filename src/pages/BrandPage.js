@@ -1,89 +1,63 @@
-// BrandPage.jsx
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-// CRA(.env): REACT_APP_KAKAO_API_KEY=... / Vite(.env): VITE_KAKAO_API_KEY=...
-const KAKAO_API_KEY =
-  (typeof import.meta !== "undefined" && import.meta.env?.VITE_KAKAO_API_KEY) ||
-  process.env.REACT_APP_KAKAO_API_KEY;
-
-// Kakao SDK를 안전하게 1회만 로드하는 함수
-function loadKakaoSdk(appkey) {
-  if (!appkey) return Promise.reject(new Error("Kakao JavaScript 키가 없습니다."));
-  // 이미 로드된 경우
-  if (window.kakao?.maps) {
-    return new Promise((resolve) => window.kakao.maps.load(resolve));
-  }
-  // 이미 script 태그가 있는 경우
-  if (document.getElementById("kakao-sdk")) {
-    return new Promise((resolve) => {
-      const check = setInterval(() => {
-        if (window.kakao?.maps) {
-          clearInterval(check);
-          window.kakao.maps.load(resolve);
-        }
-      }, 50);
-    });
-  }
-  // 최초 로드
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.id = "kakao-sdk";
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${appkey}&libraries=services&autoload=false`;
-    script.async = true;
-    script.onload = () => window.kakao.maps.load(resolve);
-    script.onerror = (e) => reject(new Error("Kakao SDK 로드 실패"));
-    document.head.appendChild(script);
-  });
-}
+const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
 
 export default function BrandPage() {
-  const mapEl = useRef(null);
-
   useEffect(() => {
-    const LAT = 37.308409;
-    const LNG = 126.851066;
-    const PLACE_NAME = "차간";
+    // 기존 스크립트 제거
+    const existingScript = document.querySelector(
+      "script[src^='https://dapi.kakao.com']"
+    );
+    if (existingScript) existingScript.remove();
 
-    loadKakaoSdk(KAKAO_API_KEY)
-      .then(() => {
-        const { kakao } = window;
-        const center = new kakao.maps.LatLng(LAT, LNG);
+    // 카카오맵 스크립트 추가
+    const script = document.createElement("script");
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_API_KEY}&libraries=services&autoload=false`;
+    script.async = true;
 
-        const map = new kakao.maps.Map(mapEl.current, {
-          center,
+    script.onload = () => {
+      window.kakao.maps.load(() => {
+        const container = document.getElementById("map");
+        const options = {
+          center: new window.kakao.maps.LatLng(37.308409, 126.851066), // 지도 중심 좌표
           level: 3,
+        };
+        const map = new window.kakao.maps.Map(container, options);
+
+        // 마커 생성
+        const markerPosition = new window.kakao.maps.LatLng(
+          37.308409,
+          126.851066
+        );
+        const marker = new window.kakao.maps.Marker({
+          position: markerPosition,
+          map: map,
         });
 
-        const marker = new kakao.maps.Marker({ position: center, map });
-        const dirUrl = `https://map.kakao.com/link/to/${encodeURIComponent(
-          PLACE_NAME
-        )},${LAT},${LNG}`;
-
+        // InfoWindow 생성
         const content = `
-          <div style="width:250px; padding:10px; font-family: 'Gowun Batang', sans-serif; font-size:14px; text-align:center; 
+          <div style="width:250px; padding:10px; font-family: 'Gowun Batang'; font-size:14px; text-align:center; 
                       border-radius:8px; background:#fff; box-shadow: 2px 2px 10px rgba(0,0,0,0.2);">
             <h3 style="margin:0; padding:0; color:#333; font-size:16px;">차간 茶潤</h3>
             <p style="margin:5px 0 10px; color:#666; font-size:12px;">
               안산시 00구 000동 123나길 56
             </p>
-            <button onclick="window.open('${dirUrl}','_blank')"
+            <button onclick="window.open('https://map.kakao.com/link/to/차간,37.308409,126.851066')" 
                     style="margin-top:10px; padding:5px 10px; border:none; background:#007BFF; color:#fff; border-radius:5px; cursor:pointer;">
               길찾기
             </button>
           </div>
         `;
-
-        const infowindow = new kakao.maps.InfoWindow({ content });
-        kakao.maps.event.addListener(marker, "click", () => infowindow.open(map, marker));
-        // 기본으로 열어두고 싶으면 아래 주석 해제
-        infowindow.open(map, marker);
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("지도를 불러오지 못했어요. 콘솔 에러를 확인해 주세요.");
+        const infowindow = new window.kakao.maps.InfoWindow({ content });
+        window.kakao.maps.event.addListener(marker, "click", function () {
+          infowindow.open(map, marker);
+        });
       });
+    };
+
+    document.head.appendChild(script);
   }, []);
 
   return (
@@ -116,7 +90,7 @@ export default function BrandPage() {
         <section className="location">
           <h3>오시는 길</h3>
           <div
-            ref={mapEl}
+            id="map"
             style={{
               width: "100%",
               maxWidth: "900px",
@@ -124,7 +98,8 @@ export default function BrandPage() {
               margin: "0 auto",
               border: "1px solid #ddd",
             }}
-          />
+          ></div>
+
           <div className="location-info">
             <p>
               <strong>[차간 茶潤]</strong>
@@ -140,14 +115,17 @@ export default function BrandPage() {
           <div className="transport">
             <h4>대중교통 이용을 추천드려요</h4>
             <p>지하철 4호선 000역 3번 출구, 도보 10분</p>
-            <p className="tip">✅ tip! 000역 엘리베이터 이용 후 육교로 이동하면 가장 편리</p>
+            <p className="tip">
+              ✅ tip! 000역 엘리베이터 이용 후 육교로 이동하면 가장 편리
+            </p>
           </div>
 
           <div className="parking">
             <h4>주차 안내</h4>
             <p>
               - 별도 주차 공간이 없어 대중교통 이용 권장
-              <br />- 인근 유료주차장 서비스: 20만 원 이상 구매 시 최대 2시간 주차 지원
+              <br />
+              - 인근 유료주차장 서비스: 20만 원 이상 구매 시 최대 2시간 주차 지원
             </p>
             <ul>
               <li>00주차장: 안산 00구 000동 123-4</li>
@@ -159,6 +137,30 @@ export default function BrandPage() {
       </main>
 
       <Footer />
+
+      <style>{`
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Gowun Batang', sans-serif; background: #fff; color: #1a1a1a; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+        .brand-page { padding: 80px 20px; line-height: 1.8; }
+        .brand-intro { text-align: center; margin-bottom: 80px; }
+        .brand-intro h2 { font-family: "Solmoe KimDaeGeon"; font-size: 50px; font-weight: 500; margin-bottom: 10px; }
+        .brand-intro .sub { font-size: 30px; font-weight: 400; display: block; margin-top: -10px; }
+        .brand-eng { margin-top: 30px; font-weight: 800; font-size: 20px; }
+        .brand-quote { font-size: 18px; font-style: italic; margin: 20px 0; }
+        .brand-content { display: flex; align-items: center; justify-content: center; gap: 60px; margin-top: 100px; }
+        .brand-logo img { max-width: 350px; height: auto; }
+        .brand-desc { list-style: none; max-width: 500px; font-size: 16px; line-height: 1.8; }
+        .brand-desc li { margin-bottom: 20px; }
+        .location h3 { font-size: 24px; border-top: 1px solid #ccc; padding-top: 40px; margin-bottom: 20px; }
+        .location-info { background: #f5f5f5; padding: 20px; margin: 30px 0; font-size: 16px; }
+        .transport, .parking { margin: 30px 0; }
+        .transport h4, .parking h4 { font-size: 18px; margin-bottom: 10px; }
+        .transport .tip { color: #b60000; font-weight: 500; margin-top: 8px; }
+        .parking ul { list-style: disc; padding-left: 20px; }
+        @media (max-width: 768px) { .brand-content { flex-direction: column; text-align: center; } }
+      `}</style>
     </>
   );
 }

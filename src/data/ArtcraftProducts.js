@@ -94,6 +94,30 @@ export const products = [
         title: "돌문진",
         desc: "[Timeless Craft] 비정형의 버블이 아름다운 유리공예 오브제 문진",
         price: "219,000원",
-      }
+      },
+      {
+        id: 13,
+        img: "./img/newIn2-2.png",
+        name: "박소희",
+        title: "청자 미니 호롱 - 조롱박",
+        desc: "[Timeless Craft] 전통 등잔을 현대적인 미감으로 표현한 미니 도자 호롱",
+        price: "60,000원",
+      },
+      {
+        id: 14,
+        img: "./img/newIn2-4.png",
+        name: "박소희",
+        title: "청자 사과 호롱",
+        desc: "[Timeless Craft] 전통 등잔을 현대적인 미감으로 표현한 도자 호롱",
+        price: "120,000원",
+      },
+      {
+          id: 15,
+          img: "./img/newIn2-3.png",
+          name: "박소희",
+          title: "청자 양이 호롱",
+          desc: "[Timeless Craft] 전통 등잔을 현대적인 미감으로 표현한 도자 호롱",
+          price: "140,000원",
+        },
   ];
   

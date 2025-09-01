@@ -10,6 +10,9 @@ export default function SignUpPage() {
         password: "",
         passwordConfirm: "",
         email: "",
+        birthYear: "",
+        birthMonth: "",
+        birthDay: "",
         agreeAll: false,
         agreeTerms: false,   // (필수) 이용약관/개인정보
         agreeAge14: false,   // (필수) 만 14세 이상
@@ -52,6 +55,8 @@ export default function SignUpPage() {
         if (!form.password || form.password.length < 6) e.password = "비밀번호는 6자 이상이어야 해요.";
         if (form.password !== form.passwordConfirm) e.passwordConfirm = "비밀번호가 일치하지 않습니다.";
         if (!form.email.trim()) e.email = "이메일을 입력하세요.";
+        if (!form.birthYear || !form.birthMonth || !form.birthDay) {
+            e.birth = "생년월일을 모두 선택하세요.";}
         if (!form.agreeTerms) e.agreeTerms = "필수 약관에 동의해야 가입할 수 있습니다.";
         if (!form.agreeAge14) e.agreeAge14 = "만 14세 이상에 동의해야 가입할 수 있습니다.";
         return e;
@@ -69,6 +74,7 @@ export default function SignUpPage() {
             name: form.name,
             password: form.password,
             email: form.email,
+            birth: `${form.birthYear}-${form.birthMonth}-${form.birthDay}`,
             agree: {
                 terms: form.agreeTerms,
                 age14: form.agreeAge14,
@@ -158,6 +164,55 @@ export default function SignUpPage() {
                                 aria-describedby={errors.email ? "err-email" : undefined}
                             />
                             {errors.email && <p className="form-error" id="err-email">{errors.email}</p>}
+
+                            {/* 생년월일 */}
+                             <label htmlFor="birth">생년월일 ⁕</label>
+                             <div className="birth-box">
+                               <select
+                                 name="birthYear"
+                                 value={form.birthYear}
+                                 onChange={onChange}
+                               >
+                                 <option value="">년도</option>
+                                 {Array.from({ length: 100 }, (_, i) => {
+                                   const year = new Date().getFullYear() - i;
+                                   return (
+                                     <option key={year} value={year}>
+                                       {year}
+                                     </option>
+                                   );
+                                 })}
+                               </select>
+                             
+                               <select
+                                 name="birthMonth"
+                                 value={form.birthMonth}
+                                 onChange={onChange}
+                               >
+                                 <option value="">월</option>
+                                 {Array.from({ length: 12 }, (_, i) => (
+                                   <option key={i + 1} value={i + 1}>
+                                     {i + 1}
+                                   </option>
+                                 ))}
+                               </select>
+                             
+                               <select
+                                 name="birthDay"
+                                 value={form.birthDay}
+                                 onChange={onChange}
+                               >
+                                 <option value="">일</option>
+                                 {Array.from({ length: 31 }, (_, i) => (
+                                   <option key={i + 1} value={i + 1}>
+                                     {i + 1}
+                                   </option>
+                                 ))}
+                               </select>
+                             </div>
+                             {errors.birth && <p className="form-error">{errors.birth}</p>}
+                             
+
 
                             {/* 약관 동의 */}
                             <div className="agree-box">

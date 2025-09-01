@@ -55,57 +55,75 @@ export const teaproducts = [
       },
       {
         id: 7,
-        img: "/img/newIn3-1.png",
-        name: "베르비에",
-        title: "눈결 개완",
-        desc: "[Timeless Craft] 눈결의 섬세함을 닮은 수공예 유리 개완",
+        img: "/img/j_detail2-4.png",
+        name: "토림도예",
+        title: "양이 낮은잔",
+        desc: "[Timeless Craft] 품향을 하기 좋도록 좁고 짧은 형태로 제작된 찻잔",
         price: "55,000원",
         Link: "/productdetailpage"
       },
       {
         id: 8,
-        img: "/img/newIn3-2.png",
-        name: "베르비에",
-        title: "눈결 좁은잔",
-        desc: "[Timeless Craft] 눈결의 섬세함을 닮은 수공예 유리 찻잔",
+        img: "/img/j_detail2-7.png",
+        name: "토림도예",
+        title: "양이 높은잔",
+        desc: "[Timeless Craft] 품향을 하기 좋도록 좁고 긴 형태로 제작된 찻잔",
         price: "40,000원",
         Link: "/productdetailpage"
       },
       {
         id: 9,
-        img: "/img/newIn3-4.png",
-        name: "FOH 포",
-        title: "목련잎 찻잔 받침",
-        desc: "[Timeless Craft] 목련잎의 형태를 섬세하게 표현한 찻잔 받침",
+        img: "/img/j_detail2-8.png",
+        name: "토림도예",
+        title: "백자 둥근 다관",
+        desc: "[Timeless Craft] 품향을 하기 좋도록 좁고 둥근 형태로 제작된 다관",
         price: "35,000원",
         Link: "/productdetailpage"
       },
       {
         id: 10,
-        img: "/img/newIn3-3.png",
-        name: "FOH 포",
-        title: "국화문 찻잔 받침",
-        desc: "[Timeless Craft] 국화꽃의 형태를 섬세하게 표현한 찻잔 받침",
+        img: "/img/j_detail2-11.png",
+        name: "토림도예",
+        title: "백자 사각 다관",
+        desc: "[Timeless Craft] 품향을 하기 좋도록 좁고 사각 형태로 제작된 다관",
         price: "35,000원",
         Link: "/productdetailpage"
       },
       {
         id: 11,
-        img: "/img/newIn3-1.png",
-        name: "베르비에",
-        title: "눈결 개완",
-        desc: "[Timeless Craft] 눈결의 섬세함을 닮은 수공예 유리 개완",
+        img: "/img/j_detail2-4.png",
+        name: "토림도예",
+        title: "양이 낮은잔",
+        desc: "[Timeless Craft] 품향을 하기 좋도록 좁고 짧은 형태로 제작된 찻잔",
         price: "55,000원",
         Link: "/productdetailpage"
       },
       {
         id: 12,
-        img: "/img/newIn3-2.png",
-        name: "베르비에",
-        title: "눈결 좁은잔",
-        desc: "[Timeless Craft] 눈결의 섬세함을 닮은 수공예 유리 찻잔",
+        img: "/img/j_detail2-7.png",
+        name: "토림도예",
+        title: "양이 높은잔",
+        desc: "[Timeless Craft] 품향을 하기 좋도록 좁고 긴 형태로 제작된 찻잔",
         price: "40,000원",
         Link: "/productdetailpage"
-      }
+      },
+      {
+        id: 13,
+        img: "/img/Teaware1.png",
+        name: "Craft U",
+        title: "Herb Pot 0.5L",
+        desc: "[Timeless Craft] 분리가 가능한 찻잎 여과기가 함께 구성된 유리 찻주전자",
+        price: "40,000원",
+        Link: "/productdetailpage"
+      },
+      {
+        id: 14,
+        img: "/img/Teaware2.png",
+        name: "Craft U",
+        title: "Sirutsugi Wide 170ml",
+        desc: "[Timeless Craft] 블렌딩 오일, 간장, 비네거 저그를 겸할 수 있는 내열유리 찻주전자",
+        price: "48,000원",
+        Link: "/productdetailpage"
+      },
   ];
   

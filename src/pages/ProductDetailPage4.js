@@ -25,15 +25,15 @@ export default function ProductDetailPage4() {
         name: "김**",
         date: "2025-07-10",
         rating: 4,
-        content: "섬세하고 매트한 질감이 좋았습니다.",
-        photos: ["/img/p_detail4-2.png"]
+        content: "모양이 너무 귀여워요.",
+        photos: ["/img/p_detail4-6.png"]
       },
       {
         id: 1,
         name: "박**",
         date: "2025-08-13",
         rating: 5,
-        content: "너무 예뻐요! 따뜻한 느낌을 줘요 ☺️",
+        content: "이름도 모양도 예쁜 호롱. 저녁마다 조명대신 켜놓으니 차분해져요!",
         photos: ["/img/p_detail4-4.png"]
       },
     ].sort((a, b) => (a.date < b.date ? 1 : -1))
@@ -95,17 +95,16 @@ export default function ProductDetailPage4() {
       <Header />
       <main className="product-detail-page">
         <div className="container">
-          <h1 className="product-title">눈결 개완</h1>
-          <h2 className="product-brand">베르비에</h2>
+          <h1 className="product-title">청자 미니 호롱 - 조롱박</h1>
+          <h2 className="product-brand">박소희</h2>
 
           <div className="main-image">
             <img src="/img/p_detail4-1.png" alt="대표 이미지" />
           </div>
 
           <p className="description">
-            유리공예가 〈베르비에〉의 〈눈결 개완〉을 소개합니다. <br />
-            서늘하고 포근함이 공존하는 눈雪 의 속성처럼 맑으면서도 모호한 표면이 아름다운 유리 개완입니다.
-            약 95ml 용량으로 1-2인의 차를 우리기 알맞은 용량이에요.
+          전통 등잔을 현대적인 미감으로 해석한 박소희 작가의 〈미니 호롱 - 조롱박〉입니다.  <br />
+          한국의 유물인 향합과 연적의 형태에서 영감을 받은 단아한 생김새와 작가만의 독특한 유약이 아름다운 제품입니다.
           </p>
 
           <div className="main-image">
@@ -113,9 +112,9 @@ export default function ProductDetailPage4() {
           </div>
 
           <p className="description">
-            눈결 시리즈는 “눈이 쌓여 이룬 상태나 무늬, 눈에 슬쩍 뜨이는 잠깐동안 마음이 눈에 드러난 상태” 라는 의미를 지닌 <br /> 우리말 “눈결”을 모티브로 한 유하나 작가의 유리 공예 기물입니다. <br />
+            기름을 먹인 명주실 심지를 태워 방 안에 환한 불빛을 만들었던 등잔의 과거 풍경을 상상해 봅니다. <br />
             <br />
-            모든 기물은 형태를 흙으로 빚고 내화물을 바르고 굳힌 뒤, 조형틀에 유리 파우더와 알갱이를 켜켜이 쌓고 가마에 굽는 유리캐스팅 기법으로 제작합니다.
+            전기 조명과는 다른 은은한 불빛이 만들어내는 온기, 고즈넉하고 다정한 분위기가 떠오릅니다.
           </p>
 
           <div className="main-image">
@@ -123,8 +122,7 @@ export default function ProductDetailPage4() {
           </div>
 
           <p className="description">
-            차의 수색이 투명하게 비치는 것도 유리 다기를 사용하는 즐거움. <br />
-            다양한 차를 우리기 좋은 차도구이자 소장가치가 높은 공예품으로 권해드립니다.
+          파라핀 오일과 답비가 함께 구성된 패키지로, 깔끔하고 정갈한 선물용으로도 추천해 드립니다.
           </p>
 
           <div className="main-image">
@@ -132,27 +130,26 @@ export default function ProductDetailPage4() {
           </div>
 
           <ul className="detail-notes">
-            <li>- 수공예 작업으로 같은 기물이라도 사이즈와 형태가 조금씩 다릅니다.</li>
-            <li>- 유리 특성상 급격한 온도 변화나 강한 열, 충격이 가해지면 파손될 위험이 있으니 유의해 주세요.</li>
-            <li>- 식기세척기, 전자레인지, 오븐 등의 사용은 불가합니다.</li>
-            <li>- 세척시에는 부드러운 스펀지나 천을 통해 세척해 주세요.</li>
+            <li>- 한 점 한 점 작가의 손을 통해 제작되는 제품으로, 모든 제품은 조금씩 유약의 흐름과 색, 크기의 미묘한 차이가 있습니다. <br /> 
+            이는 자연스러운 현상으로 기물 각각의 고유한 표정으로 여겨주세요.</li>
+            <li>- 심지구멍으로 나온 실의 길이가 길면 불꽃이 커지거나 그을음이 발생할 수 있고, 짧으면 불이 금방 꺼질 수 있으니 유의해 주세요.</li>
+            <li>- 호롱 사용 후에는 환기를 시켜주세요. 파라핀 오일이 부족하지 않은 이상 불은 꺼지지 않습니다.</li>
           </ul>
 
           {/* ========== 관리방법 표 ========== */}
           <section className="spec-grid">
             <div className="spec-row">
               <div className="spec-label">재료</div>
-              <div className="spec-value">백자토</div>
+              <div className="spec-value">도자기</div>
               <div className="spec-label">크기&용량</div>
               <div className="spec-value">
-                (받침포함) 높이 70mm · 받침 Ø95 x H15mm<br />
-                한 잔 용량 약 95ml
+              약 W40 x D40 x H55mm
               </div>
             </div>
 
             <div className="spec-row">
               <div className="spec-label">관리방법</div>
-              <div className="spec-value">세제없이 물로만 세척</div>
+              <div className="spec-value">부드러운 천</div>
               <div className="spec-label">주의사항</div>
               <div className="spec-value">상세페이지 하단 표기</div>
             </div>
@@ -167,16 +164,16 @@ export default function ProductDetailPage4() {
 
             {/* 가운데 정보 블록 */}
             <div className="buy-info">
-              <div className="buy-brand">베르비에</div>
-              <h3 className="buy-title">눈결 개완</h3>
-              <p className="buy-desc">[Timeless Craft] 눈결의 섬세함을 닮은 수공예 유리 개완</p>
+              <div className="buy-brand">박소희</div>
+              <h3 className="buy-title">청자 미니 호롱 - 조롱박</h3>
+              <p className="buy-desc">[Timeless Craft] 전통 등잔을 현대적인 미감으로 표현한 미니 도자 호롱</p>
 
-              <div className="buy-price">55,000원</div>
+              <div className="buy-price">60,000원</div>
 
               {/* 총 상품금액 라인 + 수량 스피너 (인라인) */}
               <div className="buy-total">
                 <span className="total-label">총 상품금액</span>
-                <strong className="total-price">55,000원</strong>
+                <strong className="total-price">60,000원</strong>
 
                 <div className="buy-qty inline">
                   <div className="spinner">

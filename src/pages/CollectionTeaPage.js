@@ -39,12 +39,12 @@ export default function CollectionTeaPage() {
             const to = item.Link || item.link || `/product/${item.id}`;
             return (
               <div key={item.id} className="product-card">
-                <Link to={to} aria-label={`${item.title} 상세 보기`}>
+                <Link to="/productdetailpage2" aria-label={`${item.title} 상세 보기`}>
                   <img src={item.img} alt={item.title} />
                 </Link>
                 <div className="product-brand">{item.name}</div>
                 <div className="product-name">
-                  <Link to={to}>{item.title}</Link>
+                  <Link to="/productdetailpage2">{item.title}</Link>
                 </div>
                 <div className="product-desc">{item.desc}</div>
                 <div className="product-price">{item.price}</div>
