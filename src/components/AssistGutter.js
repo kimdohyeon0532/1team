@@ -1,16 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
-/**
- * Drop <AssistGutter /> near the root of your app (e.g., in App.jsx).
- * It adds: 1) a slim custom right-side scroll bar (progress rail)
- *          2) a floating chatbot toggle right next to that rail
- *          3) a chatbot window that slides out above content
- *
- * Styling: paste the CSS below into your global stylesheet (e.g., App.css).
- */
 export default function AssistGutter() {
     const [chatOpen, setChatOpen] = useState(false);
     const [progress, setProgress] = useState(0); // 0..1
+    const [showTop, setShowTop] = useState(false); // 맨위 버튼 노출
     const railRef = useRef(null);
 
     // Update scroll progress
@@ -19,6 +12,7 @@ export default function AssistGutter() {
             const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
             const denom = Math.max(1, scrollHeight - clientHeight);
             setProgress(scrollTop / denom);
+            setShowTop(scrollTop > 160); // 원하는 노출 임계값
         };
         onScroll();
         window.addEventListener("scroll", onScroll, { passive: true });
@@ -67,30 +61,52 @@ export default function AssistGutter() {
         };
     }, [progress]);
 
+    const scrollToTop = () => {
+        const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+    };
+
     return (
         <>
-            {/* Utility gutter anchored to right edge */}
+            {/* 오른쪽 전체 거터 */}
             <div className="assist-gutter" aria-hidden>
 
+                {/* 레일 왼쪽, 버튼들 가로 정렬 컨테이너 */}
+                <div className="assist-floating" aria-hidden="false">
+                    {/* 맨 위로 버튼 */}
+                    <button
+                        type="button"
+                        className={`scroll-top-btn ${showTop ? "show" : ""}`}
+                        aria-label="페이지 맨 위로 이동"
+                        title="맨 위로"
+                        onClick={scrollToTop}
+                    >
+                        ▲
+                    </button>
 
-
-                {/* Chatbot toggle button */}
-                <button
-                    type="button"
-                    className="chatbot-toggle-btn"
-                    aria-label={chatOpen ? "챗봇 닫기" : "챗봇 열기"}
-                    onClick={() => setChatOpen((v) => !v)}
-                >
-                    💬
-                </button>
+                    {/* 챗봇 토글 버튼 */}
+                    <button
+                        type="button"
+                        className="chatbot-toggle-btn"
+                        aria-label={chatOpen ? "챗봇 닫기" : "챗봇 열기"}
+                        title={chatOpen ? "챗봇 닫기" : "챗봇 열기"}
+                        onClick={() => setChatOpen((v) => !v)}
+                    >
+                        💬
+                    </button>
+                </div>
             </div>
 
-            {/* Chatbot window */}
-            <div className={`chatbot-window ${chatOpen ? "open" : ""}`} role="dialog" aria-modal="false" aria-label="FINTO 상담봇">
+            {/* 챗봇 창 */}
+            <div
+                className={`chatbot-window ${chatOpen ? "open" : ""}`}
+                role="dialog"
+                aria-modal="false"
+                aria-label="FINTO 상담봇"
+            >
                 <div className="chatbot-header">FINTO 상담봇</div>
                 <div className="chatbot-body">
                     <p>안녕하세요! FINTO AI ChatBot 입니다! 무엇을 도와드릴까요?</p>
-                    {/* TODO: 챗봇 iframe 삽입 */}
                     {/* <iframe src="https://your-bot" title="FINTO Chat" /> */}
                 </div>
                 <div className="chatbot-footer">
@@ -101,4 +117,3 @@ export default function AssistGutter() {
         </>
     );
 }
-

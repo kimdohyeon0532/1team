@@ -2,16 +2,21 @@
 .login-main {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: calc(100vh);
+    align-items: flex-start;
+    /* ← 중앙이 아니라 상단부터 시작 */
+    min-height: calc(100vh - var(--header-h, 80px) - var(--footer-h, 0px));
+    padding: 20px 16px 40px;
+    /* 위쪽 패딩 줄이고, 아래는 필요하면 여유 */
+    box-sizing: border-box;
 }
 
 .login-container {
     max-width: 100%;
-    padding: 40px 30px;
-    box-sizing: border-box;
-    border-radius: 4px;
-    margin-top: 45px;
+    padding: 20px;
+    /* 좌우/상하 패딩 조금만 */
+    border-radius: 8px;
+    margin-top: 0;
+    /* 불필요한 margin 제거 */
 }
 
 .login-container h2 {
@@ -46,17 +51,21 @@
     flex-direction: column;
     gap: 12px;
     width: 428px;
-    height: 118px;
+    height: auto;
+    /* 고정 제거 */
     box-sizing: border-box;
 }
 
 .input-column input {
-    width: 98%;
-    height: 51px;
+    width: 100%;
+    /* 98% → 100% */
+    height: 48px;
+    /* 51px → 더 슬림하게 */
     padding: 10px 12px;
     border: 1px solid #ddd;
-    outline: none;
+    border-radius: 6px;
 }
+
 
 .login-button {
     height: 118px;

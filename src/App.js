@@ -25,7 +25,7 @@ import ProductDetailPage2 from "./pages/ProductDetailPage2";
 import ProductDetailPage3 from "./pages/ProductDetailPage3";
 import ProductDetailPage4 from "./pages/ProductDetailPage4";
 
-import OrderCompletePage from "./pages/Ordercomplete";
+import Ordercomplete from "./pages/Ordercomplete";
 import MypageEdit from "./pages/MypageEdit";
 import AccountProfileForm from "./components/AccountProfileForm";
 import Order from "./pages/Order";
@@ -76,7 +76,7 @@ export default function App() {
 
         {/* 장바구니/주문 */}
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/ordercomplete" element={<OrderCompletePage />} />
+        <Route path="/ordercomplete" element={<Ordercomplete />} />
         <Route path="/order" element={<Order />} />
 
         {/* 계정/마이페이지 */}
