@@ -1,0 +1,148 @@
+{
+  "responses": [
+    {
+      "keyword": "컵",
+      "response": "컵 종류는 베르비에의 눈결 좁은 잔,이지은의 유리공기 원형합,Kimura Glass의 하이볼 잔10oz,칵테일 잔 5oz,칵테일잔 5oz,토림도예의 양이 낮은 잔,양이 높은 잔이 있습니다.",
+      "images": [
+        "/img/newIn3-2.png",
+        "/img/artcraft3.png",
+        "/img/newin1-1.png",
+        "/img/newin1-2.png",
+        "/img/newin1-3.png",
+        "/img/newin1-4.png",
+        "/img/j_detail2-4.png",
+        "/img/j_detail2-5.png"
+      ]
+    },
+    {
+      "keyword": "주전자",
+      "response": "Craft U의 Herb Pot 0.5L, Sirutsugi Wide 170ml, Herb Pot 0.3L 또는 Trandglas JENA의 Miko TeaPot Handle,Miko TeaPot,Round Pot 1L 또는 토림도예의 백자 둥근 다관이 있습니다.",
+      "images": [
+        "/img/TeaWare1.png",
+        "/img/TeaWare2.png",
+        "/img/TeaWare3.png",
+        "/img/TeaWare4.png",
+        "/img/TeaWare5.png",
+        "/img/TeaWare6.png"
+      ]
+    },
+    {
+      "keyword": "추천",
+      "response": "추천 해드릴 상품은 박소희의 청자 미니 호롱입니다.",
+      "image": "/img/newin2-1.png"
+    },
+    {
+      "keyword": "소개",
+      "response": "저는 고객님을 안내해드리는 Chagan 챗봇입니다."
+    },
+    {
+      "keyword": "오늘",
+      "response": "오늘 추천상품은 마버글라스의 달항아리 M 입니다.",
+      "image": "/img/artcraft1.png"
+    },
+    {
+      "keyword": "지승민",
+      "response": "지승민 작가에는 Rim Oval Plate 작품들이 있습니다.",
+      "images": [
+        "/img/Tableware1.png",
+        "/img/Tableware2.png",
+        "/img/Tableware3.png"
+      ]
+    },
+    {
+      "keyword": "도윤공방",
+      "response": "도윤공방에는 그릇 종류들이 있습니다.",
+      "images": [
+        "/img/Tableware4.png",
+        "/img/Tableware5.png",
+        "/img/Tableware6.png"
+      ]
+    },
+    {
+      "keyword": "키무라",
+      "response": "Kimura Glass 에는 하이볼10oz와 칵테일 잔 0.5oz와 칵테일 잔 0.5oz가 있습니다.",
+      "images": ["/img/newin1-1.png", "/img/newin1-2.png", "/img/newin1-3.png"]
+    },
+    {
+      "keyword": "신상품",
+      "response": "차간의 오늘 신상품 베르비에의 잔과 받침대가 있습니다."
+    },
+    {
+      "keyword": "기념품",
+      "response": "여행지에서 인기 있는 기념품을 추천드립니다."
+    },
+    {
+      "keyword": "인기",
+      "response": "차간의 인기 상품 kimura glass의 BATHTUB 10oz Highball이 인기상품 입니다."
+    },
+    {
+      "keyword": "티",
+      "response": "티 종류의 상품은 티 웨어 메뉴에 위치합니다."
+    },
+    {
+      "keyword": "찻잔",
+      "response": "찻잔 종류는 Trandglas JENA,토림도예,Craft U가 종류합니다."
+    },
+    {
+      "keyword": "도와줘요",
+      "response": "chagan 챗봇 상담입니다. 무엇을 도와드릴까요?"
+    },
+    {
+      "keyword": "주전자",
+      "response": "Craft U Sirutsugi Wide 170ml와 Craft U Herb Pot 0.5L를 추천드립니다.."
+    },
+    {
+      "keyword": "브랜드",
+      "response": "차간은 전통 소재 감성을 현대적으로 재해석, 일상 속 여백을 채우는 오브제 제작 브랜드 입니다."
+    },
+    {
+      "keyword": "길찾기",
+      "response": "[차간 茶潤]안산시 00구 000동 123나길 56영업시간 : 화–일 12-7PM (월요일 휴무)전화 : 02-123-4567대중교통 이용을추천드려요 지하철 4호선 000역 3번 출구, 도보 10분  ✅ tip! 000역 엘리베이터 이용 후 육교로 이동하면 가장 편리 주차 안내 - 별도 주차공간이 없어 대중교통 이용 권장- 인근 유료주차장 서비스: 20만 원 이상 구매 시 최대 2시간 주차 지원00주차장: 안산 00구 000동 123-411 주차장: 안산 00구 000길 122122번길 주차장: 안산 00구 000동 567."
+    },
+    {
+      "keyword": "저널",
+      "response": "박지영 작가와 김도현 작가와 김제형 작가의 전시회를 보신다면 저널 메뉴를 클릭 해주세요."
+    },
+    {
+      "keyword": "영업",
+      "response": "온라인은 평일 오전 11시부터 오후 4시까지 입니다. 점심시간은 오후 1시 부터 오후 2시까지 입니다. (토,일)공휴일 휴무입니다. 오프라인은 화~일/오후 12시부터 오후 7시까지 입니다.(월요일은 휴무입니다.) "
+    },
+    {
+      "keyword": "컬렉션",
+      "response": "컬렉션은 티 웨어,테이블 웨어, 아트&크래프트가 있습니다."
+    },
+    {
+      "keyword": "전시추천",
+      "response": "Exhibition story를 추천합니다."
+    },
+    {
+      "keyword": "찻잔찾기/찻잔 찾기",
+      "response": "어떤 찻잔을 원하시나요? 찾으시는게 있으시면 알려드릴게요!"
+    },
+    {
+      "keyword": "고객센터",
+      "response": "고객센터 전화번호는 1588-7890 입니다."
+    },
+    {
+      "keyword": "국내여행",
+      "response": "국내에서 가볼만한 여행지를 추천드립니다."
+    },
+    {
+      "keyword": "도움말",
+      "response": "찾으시는 서비스를 원하시나요? 예): 찻잔,주전자,하이볼,투명컵,그릇으로 알려주시면 보다 빠르게 안내해드릴게요."
+    },
+    {
+      "keyword": "그릇",
+      "response": "지승민의 공기 Rim Over Plate와 도윤공방 낮은접시,깊은그릇,타원형 그릇이 있습니다.",
+      "images": [
+        "/img/Tableware1.png",
+        "/img/Tableware2.png",
+        "/img/Tableware3.png",
+        "/img/Tableware4.png",
+        "/img/Tableware5.png",
+        "/img/Tableware6.png"
+      ]
+    }
+  ],
+  "defaultResponse": "죄송합니다, 해당 질문에 대한 답변을 이해하지 못했습니다. 다른 질문을 입력해 주세요!"
+}

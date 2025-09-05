@@ -117,6 +117,50 @@ header.nav.show {
   color: #666;
 }
 
+.menu .nav-btn {
+  font-size: 20px;
+  /* a와 동일 폰트 크기 */
+  background: none;
+  /* 기본 버튼 배경 제거 */
+  border: none;
+  /* 기본 테두리 제거 */
+  cursor: pointer;
+  padding: 0;
+  /* a 태그와 동일하게 */
+  color: inherit;
+  /* 상속된 색상 쓰기 */
+}
+
+.menu .nav-btn:hover {
+  color: #666;
+  /* a:hover와 동일 효과 */
+}
+
+/* 1) 서브메뉴 활성 강조(이미 있는 규칙 보강용: 충돌 없으면 그대로 둬도 OK) */
+.submenu-link {
+  text-decoration: none;
+  color: #555;
+  font-size: 15px;
+  transition: all .2s ease;
+}
+
+.submenu-link:hover {
+  color: #000;
+}
+
+.submenu-link.active {
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+}
+
+/* 2) 상위 'Collection' 라벨도 자식이 활성일 때만 살짝 강조
+   :has() 지원 브라우저에서만 동작하며, 기존 타이포는 건드리지 않음 */
+.dropdown:has(.submenu-link.active)>a {
+  font-weight: 700;
+  color: #000;
+}
+
 /* ---------- HERO ---------- */
 /* ========== Vars ========== */
 :root {
@@ -332,6 +376,222 @@ header.nav.show {
   }
 }
 
+.clear-btn {
+  position: absolute;
+  right: calc(var(--search-h) + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  color: #666;
+}
+
+.clear-btn:hover {
+  color: #000;
+}
+
+
+.search-wrap .suggest .rm-recent {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: #9aa;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.search-wrap .suggest .rm-recent:hover {
+  color: #667;
+}
+
+
+.search-wrap .suggest .pill {
+  margin-left: auto;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f0f3ff;
+  color: #445;
+  border: 1px solid #dfe6ff;
+}
+
+
+.search-wrap mark {
+  background: #fff5c2;
+  padding: 0 .1em;
+}
+
+/* ===== Hero 추천 검색어 스킨 (theme-tuned) ===== */
+.search-wrap .suggest {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, .85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .10);
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  z-index: 40;
+  max-height: 320px;
+  overflow: auto;
+
+  /* 부드럽게 나타나기 */
+  transform: translateY(6px);
+  opacity: 0;
+  animation: suggest-fade-in .18s ease forwards;
+}
+
+@keyframes suggest-fade-in {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 항목 레이아웃: 아이콘/숫자 + 라벨 + 우측 화살표 */
+.search-wrap .suggest li {
+  --pad-y: 12px;
+  --pad-x: 12px;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: var(--pad-y) var(--pad-x);
+  border-radius: 10px;
+  cursor: pointer;
+  color: #111;
+  transition: background .15s ease, transform .03s ease;
+}
+
+/* 숫자 뱃지(1·2·3…) 자동 생성 */
+.search-wrap .suggest li::before {
+  counter-increment: hero-suggest;
+  content: counter(hero-suggest);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 12px;
+  /* 딥그린 테마 배지 */
+  background: var(--color-TABLE_WARE, #2A3D26);
+  color: #fff;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .15);
+}
+
+/* 목록 시작 시 카운터 리셋 */
+.search-wrap .suggest {
+  counter-reset: hero-suggest;
+}
+
+/* 라벨 텍스트 */
+.search-wrap .suggest li>span,
+.search-wrap .suggest li>b,
+.search-wrap .suggest li>i,
+.search-wrap .suggest li>em {
+  /* 다양한 태그 대응용 – 기본적으로 가운데 칸(1fr)에 라벨 텍스트가 올 거야 */
+  grid-column: 2;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: .02em;
+}
+
+/* 우측 화살표(→) */
+.search-wrap .suggest li::after {
+  content: "›";
+  grid-column: 3;
+  font-size: 18px;
+  color: rgba(0, 0, 0, .35);
+  transform: translateX(0);
+  transition: transform .12s ease, color .12s ease;
+}
+
+/* Hover / Active */
+.search-wrap .suggest li:hover,
+.search-wrap .suggest li.active {
+  background: #f5f6f4;
+  /* 아이보리 톤 */
+}
+
+.search-wrap .suggest li:hover::after,
+.search-wrap .suggest li.active::after {
+  transform: translateX(2px);
+  color: rgba(0, 0, 0, .55);
+}
+
+/* 누름 느낌 살짝 */
+.search-wrap .suggest li:active {
+  transform: scale(.996);
+}
+
+/* 포커스 접근성 */
+.search-wrap .suggest li:focus-visible {
+  outline: 2px solid #4361ee;
+  outline-offset: 2px;
+}
+
+/* 검색어 하이라이트(선택 시) */
+.search-wrap .suggest mark {
+  background: #fff5c2;
+  padding: 0 .12em;
+  border-radius: 3px;
+}
+
+/* 작은 화면 최적화 */
+@media (max-width: 480px) {
+  .search-wrap .suggest {
+    border-radius: 12px;
+    max-height: 280px;
+    padding: 6px;
+  }
+
+  .search-wrap .suggest li {
+    --pad-y: 10px;
+    --pad-x: 10px;
+    gap: 10px;
+  }
+
+  .search-wrap .suggest li::before {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+}
+
+/* 스크롤바도 살짝 정리(지원 브라우저에서만) */
+.search-wrap .suggest::-webkit-scrollbar {
+  width: 10px;
+}
+
+.search-wrap .suggest::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, .18);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+.search-wrap .suggest li[data-type="TEA_WARE"]::before {
+  background: var(--color-TEA_WARE);
+}
+
+.search-wrap .suggest li[data-type="ART_CRAFT"]::before {
+  background: var(--color-ART_CRAFT);
+}
+
+.search-wrap .suggest li[data-type="TABLE_WARE"]::before {
+  background: var(--color-TABLE_WARE);
+}
+
 /* ---------- Reduced Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
 
@@ -341,6 +601,71 @@ header.nav.show {
   }
 }
 
+/* 팝오버 래퍼: 시각 효과는 여기서 담당 */
+.search-wrap .suggest-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, .85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .10);
+  padding: 8px 8px 6px;
+  z-index: 40;
+  transform: translateY(6px);
+  opacity: 0;
+  animation: suggest-fade-in .18s ease forwards;
+}
+
+/* 헤더 라인 */
+.search-wrap .suggest-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 6px 8px;
+  color: #616161;
+  font-size: 13px;
+  letter-spacing: .2px;
+}
+
+.search-wrap .suggest-head .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #111;
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, .08);
+}
+
+.search-wrap .suggest-head .title {
+  color: #2b2b2b;
+  font-weight: 700;
+}
+
+.search-wrap .suggest-head .hint {
+  margin-left: auto;
+  font-size: 12px;
+  opacity: .7;
+}
+
+/* 기존 .suggest는 “리스트 그 자체”만 담당하도록 가볍게 */
+.search-wrap .suggest {
+  position: static;
+  /* 위치는 popover가 가짐 */
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 4px;
+  max-height: 320px;
+  overflow: auto;
+
+  /* 번호 카운터는 유지 */
+  counter-reset: hero-suggest;
+}
 
 
 /* ---------- Brand Story : 풀브리드 + 반응형 ---------- */
@@ -464,6 +789,117 @@ header.nav.show {
   transform: scale(1.02);
   opacity: 1;
   transition: all 0.3s ease;
+}
+
+/* 카드 기본 레이어링 */
+.brand-story-simple .slide {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  isolation: isolate;
+  /* 캡션 블러/그라디언트 겹침 안정화 */
+}
+
+/* 내부 래퍼 */
+.brand-story-simple .slide-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 이미지: 기본은 꽉 채우고, 호버 시 오른쪽으로 이동 */
+.brand-story-simple .slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease, filter .3s ease;
+  will-change: transform;
+}
+
+/* 캡션: 왼쪽에 숨겨두고, 호버/포커스 시 노출 */
+.brand-story-simple .slide-caption {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: min(55%, 520px);
+  padding: clamp(14px, 2.2vw, 28px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+
+  background: linear-gradient(90deg, rgba(255, 255, 255, .94) 0%, rgba(255, 255, 255, .75) 60%, rgba(255, 255, 255, 0) 100%);
+  backdrop-filter: blur(1px);
+
+  opacity: 0;
+  transform: translateX(-8%);
+  transition: opacity .35s ease, transform .35s ease;
+  pointer-events: none;
+  /* 이미지 위 클릭 방해 방지 */
+}
+
+/* 타입그래피 */
+.brand-story-simple .cap-title {
+  font-family: 'Gowun Batang';
+  font-size: clamp(18px, 2.2vw, 22px);
+  letter-spacing: .02em;
+  color: #111;
+  margin: 0;
+}
+
+.brand-story-simple .cap-desc {
+  font-size: clamp(14px, 1.7vw, 16px);
+  line-height: 1.7;
+  color: #000;
+  margin: 0;
+  font-weight: 700;
+}
+
+.brand-story-simple .cap-link {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  text-decoration: none;
+  background: #111;
+  color: #fff;
+  border: 1px solid #111;
+  transition: background .25s ease, color .25s ease;
+  pointer-events: auto;
+  /* 링크는 클릭 가능 */
+}
+
+.brand-story-simple .cap-link:hover {
+  background: #fff;
+  color: #111;
+}
+
+/* 호버/포커스 인터랙션 (데스크탑 호버 지원 환경에만) */
+@media (hover: hover) and (pointer: fine) {
+
+  .brand-story-simple .slide:hover .slide-img,
+  .brand-story-simple .slide:focus-within .slide-img {
+    transform: translateX(18%);
+    /* 오른쪽으로 밀어 비어있는 왼쪽 공간 만들기 */
+  }
+
+  .brand-story-simple .slide:hover .slide-caption,
+  .brand-story-simple .slide:focus-within .slide-caption {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 모바일/터치: 호버가 없으므로 기본은 이미지 유지.
+   필요하면 터치 시 토글되도록 JS를 추가로 붙일 수 있음. */
+
+/* 기존 규칙 충돌 방지용(첫 카드 hover시 opacity 낮추던 규칙 무력화) */
+.brand-story-simple .story-images .slide:first-child:hover img {
+  opacity: 1 !important;
 }
 
 /* Responsive */
@@ -967,9 +1403,9 @@ footer {
 
 /* 기존 :root 유지 + AssistGutter 변수 추가 */
 :root {
-  --color-TEA_WARE: #64886D;
-  --color-ART_CRAFT: #C89B63;
-  --color-TABLE_WARE: #2A3D26;
+  --color-TEA_WARE: #64886d;
+  --color-ART_CRAFT: #c89b63;
+  --color-TABLE_WARE: #2a3d26;
 
   /* 스플래시/히어로 */
   --hero-min-h: 700px;
@@ -995,7 +1431,7 @@ footer {
   /* z-index */
   --assist-radius: 14px;
   --assist-shadow: 0 8px 16px rgba(0, 0, 0, 0.28);
-  --brand: #0d6efd;
+  --brand: #64886d;
   /* #007bff 계열 */
 }
 
@@ -1024,10 +1460,8 @@ footer {
 }
 
 .assist-rail:hover {
-  background: rgba(0, 0, 0, 0.10);
+  background: rgba(0, 0, 0, 0.1);
 }
-
-
 
 /* === 버튼들을 레일 왼쪽에 가로 정렬로 배치 === */
 .assist-floating {
@@ -1056,7 +1490,8 @@ footer {
   line-height: 1;
   cursor: pointer;
   box-shadow: var(--assist-shadow);
-  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, opacity .2s ease;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease,
+    opacity 0.2s ease;
 }
 
 /* 챗봇 버튼 */
@@ -1088,7 +1523,7 @@ footer {
 .assist-floating .chatbot-toggle-btn:active,
 .assist-floating .scroll-top-btn:active {
   transform: translateY(0);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, .25);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
 /* 챗봇 창 (기존 유지) */
@@ -1105,10 +1540,10 @@ footer {
   flex-direction: column;
   overflow: hidden;
   z-index: calc(var(--assist-z) - 1);
-  transform: translateY(16px) scale(.98);
+  transform: translateY(16px) scale(0.98);
   opacity: 0;
   visibility: hidden;
-  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
 }
 
 .chatbot-window.open {
@@ -1155,6 +1590,88 @@ footer {
   border-radius: 8px;
   cursor: pointer;
 }
+
+/* 메세지 스타일 영역 */
+.message-item {
+  display: flex;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.message-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 70%;
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* 사용자 메시지 - 오른쪽 */
+.user-message {
+  justify-content: flex-end;
+}
+
+.user-message .message-bubble {
+  background-color: #64886d;
+  color: #fff;
+  border-radius: 16px 16px 0 16px;
+  padding: 8px 12px;
+  max-width: 100%;
+  /* 부모의 max-width 안에서만 제한 */
+  word-wrap: break-word;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* 오른쪽 정렬 */
+}
+
+/* 챗봇 메시지 - 왼쪽 */
+.bot-message {
+  justify-content: flex-start;
+}
+
+.bot-message .message-bubble {
+  background-color: #f1f0f0;
+  color: #333;
+  border-radius: 16px 16px 16px 0;
+  padding: 8px 12px;
+  max-width: 100%;
+  word-wrap: break-word;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* 말풍선 객체 */
+.message-bubble {
+  display: inline-block;
+  max-width: 70%;
+  width: auto;
+  padding: 8px 12px;
+  border-radius: 16px;
+  word-break: break-word;
+  white-space: normal;
+  line-height: 1.5;
+}
+
+/* 이미지 영역 */
+.message-image,
+.message-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.message-image img,
+.message-images img {
+  max-width: 100px;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
 
 /* 안전 영역 */
 @supports(padding:max(0px)) {

@@ -31,7 +31,7 @@ import AccountProfileForm from "./components/AccountProfileForm";
 import Order from "./pages/Order";
 
 import AssistGutter from "./components/AssistGutter";
-import NewInCarousel from "./components/NewInCarousel";
+
 
 // 페이지 전환 시 스크롤 상단으로 올려주는 유틸
 function ScrollToTop() {

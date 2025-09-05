@@ -109,11 +109,34 @@ export default function Header() {
 
                 {activeMenu === "collection" && (
                   <div className="sub-menu" role="menu" aria-label="Collection submenu">
-                    <NavLink to="/collection/teaware">TEAWARE</NavLink>
-                    <NavLink to="/collection/tableware">TABLEWARE</NavLink>
-                    <NavLink to="/collection">Art&Craft</NavLink>
+                    <NavLink
+                      to="/collection/teaware"
+                      className={({ isActive }) =>
+                        isActive ? "submenu-link active" : "submenu-link"
+                      }
+                    >
+                      TEAWARE
+                    </NavLink>
+                    <NavLink
+                      to="/collection/tableware"
+                      className={({ isActive }) =>
+                        isActive ? "submenu-link active" : "submenu-link"
+                      }
+                    >
+                      TABLEWARE
+                    </NavLink>
+                    <NavLink
+                      to="/collection"
+                      end   // ← 여기 중요: /collection/teaware 같은 자식 경로일 때는 active 안 되도록
+                      className={({ isActive }) =>
+                        isActive ? "submenu-link active" : "submenu-link"
+                      }
+                    >
+                      Art&Craft
+                    </NavLink>
                   </div>
                 )}
+
               </div>
 
               {user ? (
